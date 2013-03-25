@@ -1,8 +1,8 @@
 <?php
-/* 
+/*
 
 Drukkar, a small blogging platform
-Copyright (C) 2011-2012 Danyil Bohdan
+Copyright (C) 2011-2013 Danyil Bohdan
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -51,6 +51,7 @@ $loc_save = "Зберегти";
 $loc_format = "Формат:";
 $loc_html = "HTML";
 $loc_plain = "Чистий текст";
+$loc_markdown = "Markdown";
 $loc_delete = "Вилучити";
 $loc_delete_prompt_entry = "Ви певні, що хочете вилучити цей запис?";
 $loc_delete_prompt_file = "Ви певні, що хочете вилучити %s?";

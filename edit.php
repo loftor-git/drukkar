@@ -113,7 +113,7 @@ if (isset($_SESSION['is_logged_in'])) {
         }
         $new_entry = !$entry_exists;
        
-        echo "<p>$loc_format<br><input type=\"radio\" name=\"format\" value=\"html\" " . ((string) $entry->format === "html" ? "checked" : "")  . ">&nbsp;$loc_html <input type=\"radio\" name=\"format\" value=\"plain\" " . ($entry->format != "html" ? "checked" : "") . ">&nbsp;$loc_plain</p>
+        echo "<p>$loc_format<br><input type=\"radio\" name=\"format\" value=\"html\" " . ((string) $entry->format === "html" ? "checked" : "")  . ">&nbsp;$loc_html <input type=\"radio\" name=\"format\" value=\"markdown\" " . ((string) $entry->format === "markdown" ? "checked" : "") . ">&nbsp;$loc_markdown <input type=\"radio\" name=\"format\" value=\"plain\" " . ((string) $entry->format === "plain" ? "checked" : "") . ">&nbsp;$loc_plain</p>
         <p>$loc_title<br><input type=\"text\" size=60 name=\"title\" value=\"" . htmlspecialchars($entry->title) . "\"></p>
         <p>$loc_text<br><textarea rows=15 cols=60 name=\"text\">" . htmlspecialchars($entry->text) . "</textarea></p>";
         
@@ -132,8 +132,8 @@ if (isset($_SESSION['is_logged_in'])) {
         echo "</textarea></p>";
         
         $time = time(); // Storing UNIX time in a variable prevents different results each time we need current time below.
-        if (!$blog_entry_date_from_file_name) {
-        var_dump($entry->old_date);
+        if ($blog_entry_date_from_file_name) {
+#        var_dump($entry->old_date);
             if (isset($entry->old_date))
                 echo "<input type=\"hidden\" name=\"date\" value=\"" . date($blog_date_format, (int) $entry->old_date) . "\">";
         } else {

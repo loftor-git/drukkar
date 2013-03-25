@@ -1,7 +1,8 @@
 body {
     color: black; 
     background-color: #f5f5f5;
-    font-family: Georgia, Serif;
+    font-family: Georgia, serif;
+    font-size: 12pt;
     background-image: "1.jpg"; 
 }
 
@@ -12,9 +13,15 @@ div#container {
 }
 
 div.text {
-   # padding-left: 20px;
-   # padding-right: 20px;
-   text-indent: 2.5em;   
+    # padding-left: 20px;
+    # padding-right: 20px;
+    text-indent: 2.5em;   
+}
+
+li {
+    # padding-left: 20px;
+    # padding-right: 20px;
+    text-indent: 0em;   
 }
 
 td#header {
@@ -27,23 +34,32 @@ td#header {
 
 h1#title {
     text-align: center;
+#    text-transform:uppercase;
+    font-size: 28pt;
+    font-weight: bold;
 }
 
 h2 {
-   text-indent: 0px
+    text-indent: 0px;
+    font-size: 21pt;
+    font-weight: bold;
 }
 
 h2.entrytitle {
-  #  padding-left: 25px;    
-  #   padding-right: 25px;;   
+   # padding-left: 25px;    
+   # padding-right: 25px;;   
 }
 
 h3 {
-   text-indent: 0px;   
+    text-indent: 0px; 
+    font-size: 18pt;
+    font-weight: bold;
 }
 
 h4 {
-   text-indent: 0px;   
+    text-indent: 0px; 
+    font-size: 15pt;
+    font-weight: bold;      
 }
 
 p#subtitle {
@@ -75,6 +91,7 @@ td#content {
     border: 1px solid #999999;
     background-color: #ffffff;
     padding: 10px;
+    line-height: 150%;    
 }
 
 td#footer {

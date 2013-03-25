@@ -5,7 +5,7 @@
     <entries_dir>entries/</entries_dir><!-- Where entries are kept relative to base_location. -->
     <files_dir>files/</files_dir><!-- Where the uploaded files are kept relative to base_location. -->
 
-    <title>BLOG TITLE HERE</title><!-- Blog's title. Always visible at the top. -->
+    <title>Blog title here</title><!-- Blog's title. Always visible at the top. -->
     <subtitle></subtitle><!-- Displayed right under the title. -->
     <password>696d29e0940a4957748fe3fc9efd22a3</password><!-- The salted hash of your password goes here. Use makepass.php to calculate it. -->
     <salt></salt><!-- Type something random in here to improve how well your password is encrypted. -->
@@ -21,4 +21,5 @@
     <entry_date_from_file_name>0</entry_date_from_file_name><!-- If you set this to 1 instead of using each entry's date field Drukkar will try to parse its file name as a date. Useful in some semi-exotic cases. -->
     
     <search_enabled>1</search_enabled><!-- Set to 0 to have no search. -->
+    <show_dates>1</show_dates><!-- Set to 0 to have no date shown on any of your entries. -->
 </blog>

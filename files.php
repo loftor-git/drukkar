@@ -72,7 +72,7 @@ if (isset($_SESSION['last_activity']) && time() - $_SESSION['last_activity'] > $
 }
 
 echo <<< END
-<script type="text/JavaScript">
+<script language="JavaScript" type="text/JavaScript">
 function fdelete(file) {
 if (confirm('$loc_delete_prompt_file'.replace('%s', file))) {
         document.form.action.value = "delete";

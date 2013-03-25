@@ -25,6 +25,8 @@ header('Content-type: text/html; charset=utf-8');
 
 include("inc/config.php");
 include("inc/lib.php");
+include("inc/markdown/markdown.php");
+
 
 // A mostly-HTML header
 include("inc/header.php");

@@ -2,7 +2,7 @@
 /* 
 
 Drukkar, a small blogging platform
-Copyright (C) 2011-2012 Danyil Bohdan
+Copyright (C) 2011-2013 Danyil Bohdan
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -86,9 +86,9 @@ function entry_format($entry, $entry_id, $link_target = "index.php", $base_dir =
     }
     $tags = substr($tags, 0, -2);
     
-    return "<h2 class=\"entrytitle\"><a class=\"titlelink\" href=\"$link_target?post=" . htmlspecialchars($entry_id) . ($GLOBALS['blog_entry_links_with_titles'] != 0 ? "-" . sanitize_file_name(strip_tags($entry->title)) : "") ."\">" . ((string) $entry->format === "html" ? $entry->title : htmlspecialchars($entry->title)) . "</a></h2><div class=\"text\">" . 
-    ((string) $entry->format === "html" ? $entry->text : htmlspecialchars($entry->text)) . 
-    "</div><p class=\"files\">$files</p><p class=\"date\">" . date($GLOBALS['blog_date_format'], (int) $entry->date) . "</p>" . (strlen($tags) != 0 ? "<p class=\"tags\">Tags: $tags</p>" : "");
+    return "<h2 class=\"entrytitle\"><a class=\"titlelink\" href=\"$link_target?post=" . htmlspecialchars($entry_id) . ($GLOBALS['blog_entry_links_with_titles'] ? "-" . sanitize_file_name(strip_tags($entry->title)) : "") ."\">" . ((string) $entry->format === "html" ? $entry->title : htmlspecialchars($entry->title)) . "</a></h2><div class=\"text\">" . 
+    ((string) $entry->format === "html" ? $entry->text : ((string) $entry->format === "markdown" ? Markdown($entry->text) : htmlspecialchars($entry->text))) . 
+    "</div><p class=\"files\">$files</p>" . ($GLOBALS['blog_show_dates'] ? "<p class=\"date\">" . date($GLOBALS['blog_date_format'], (int) $entry->date) . "</p>" : "") . (strlen($tags) != 0 ? "<p class=\"tags\">Tags: $tags</p>" : "");
 }
 
 /** Sanitizes a file's name replacing special symbols with dashes
@@ -98,7 +98,7 @@ function entry_format($entry, $entry_id, $link_target = "index.php", $base_dir =
 function sanitize_file_name($string, $language = "ukrainian") {
     $string = preg_replace('/[^\w\-~_\.]+/u', '-', transliterate(mb_strtolower($string, 'UTF-8'), $language));
 
-    return preg_replace('/--+/u', '-', $string);
+    return preg_replace('/--+/u', '-', $string); # Compress repeating dashes.
 }
 
 /** Transliterates Cyrillic into Latin script
@@ -192,7 +192,7 @@ function entry_new() {
     $entry->text = "";
     $entry->tag = array();
     $entry->file = array();
-    $entry->format = "text";
+    $entry->format = "plain";
     return $entry;
 }
 
@@ -202,7 +202,7 @@ function entry_new() {
 function entry_load($file) {
     $entry = simplexml_load_file($file);
     
-    if (!$GLOBALS['blog_entry_date_from_file_name']) {
+    if ($GLOBALS['blog_entry_date_from_file_name']) {
         $entry->old_date = $entry->date; // Create a back-up copy from the date stored within the file itself
         $entry->date = string_to_time($GLOBALS['blog_file_name_format'], basename($file, ".xml"));
     } else {
@@ -216,16 +216,16 @@ function entry_load($file) {
 
 /** Saves a blog entry to an XML file
 *   @param string $file_name file name
-*   @param string $format either "html" or "plain" for plain text
+*   @param string $format "html", "markdown" or "plain" for plain text
 *   @param string $title
 *   @param string $text
 *   @param string $tags
 *   @param string $date
-*   @param string $date_backup used when $date is malformatted
+*   @param string $date_backup used when $date is malformatted or absent
 */
 function entry_save($file_name, $format, $title, $text, $tags, $files, $date, $date_backup) {
     $processed_date = string_to_time($GLOBALS['blog_date_format'], $date);
-    if ($processed_date === false) {
+    if ($processed_date === false && !$GLOBALS['blog_entry_date_from_file_name']) {
         $processed_date = string_to_time($GLOBALS['blog_date_format'], $date_backup);
         printf("<span class=\"error\">" . $GLOBALS['loc_invalid_date'] .  "</span><br>", htmlspecialchars($date), htmlspecialchars($date_backup));
     }

@@ -8,4 +8,4 @@
     </style>
 </head>
 <body>
-<div id="container"><table id="main"><tr><td id="header"><h1 id="title"><a href="<?php echo $me; ?>"><?php echo $blog_title; ?></a></h1><?php if (strlen($blog_subtitle) > 0) echo "<p id=\"subtitle\">$blog_subtitle</p>"; ?></td></tr>
+<div id="container"><table id="main"><tr><td id="header"><h1 id="title"><a href="<?php echo $blog_base_location; ?>"><?php echo $blog_title; ?></a></h1><?php if (strlen($blog_subtitle) > 0) echo "<p id=\"subtitle\">$blog_subtitle</p>"; ?></td></tr>

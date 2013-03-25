@@ -2,7 +2,7 @@
 /* 
 
 Drukkar, a small blogging platform
-Copyright (C) 2011-2012 Danyil Bohdan
+Copyright (C) 2011-2013 Danyil Bohdan
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -20,9 +20,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 */
 
-$version = "1.061"; // Drukkar version
+$version = "1.07"; // Drukkar version
 
 $blog_settings = simplexml_load_file("config.xml");
+#var_dump($blog_settings);
 
 $blog_entries_dir = (string) $blog_settings->entries_dir;
 $blog_files_dir = (string) $blog_settings->files_dir;
@@ -34,11 +35,12 @@ $blog_session_length = (int) $blog_settings->session_length;
 $blog_entries_per_page = (int) $blog_settings->entries_per_page;
 $entries_per_page_for_tags_and_search = (int) $blog_settings->entries_per_page_for_tags_and_search;
 $blog_locale = (string) $blog_settings->locale;
-$blog_entry_links_with_titles = (bool) $blog_settings->entry_links_with_titles;
+$blog_entry_links_with_titles = (bool) (int) $blog_settings->entry_links_with_titles;
 $blog_date_format = (string) $blog_settings->date_format;
-$blog_entry_date_from_file_name = (bool) $blog_settings->entry_date_from_file_name;
+$blog_entry_date_from_file_name = (bool) (int) $blog_settings->entry_date_from_file_name;
 $blog_file_name_format = (string) "YmdHis";
-$blog_search_enabled = (bool) $blog_settings->search_enabled;
+$blog_search_enabled = (bool) (int) $blog_settings->search_enabled;
+$blog_show_dates = (bool) (int) $blog_settings->show_dates;
 $blog_base_location = (string) $blog_settings->base_location;
 
 include("loc_$blog_locale.php");
