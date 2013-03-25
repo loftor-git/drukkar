@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 */
 
-$version = "1.07"; // Drukkar version
+$version = "1.08"; // Drukkar version
 
 $blog_settings = simplexml_load_file("config.xml");
 #var_dump($blog_settings);
@@ -42,6 +42,7 @@ $blog_file_name_format = (string) "YmdHis";
 $blog_search_enabled = (bool) (int) $blog_settings->search_enabled;
 $blog_show_dates = (bool) (int) $blog_settings->show_dates;
 $blog_base_location = (string) $blog_settings->base_location;
+$blog_base_url = (string) $blog_settings->base_url;
 
 include("loc_$blog_locale.php");
 

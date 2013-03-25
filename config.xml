@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Hi! This is your blog's configuration file. You must at least set a correct base_location and change the password here before use. -->
 <blog>
+    <base_url>http://example.com/blog/</base_url><!-- The URL of your blog. Currently this is only used by rss.php; everything else uses relative URLs. -->
     <base_location>/</base_location><!-- Specifies where Drukkar is located on your server. -->
     <entries_dir>entries/</entries_dir><!-- Where entries are kept relative to base_location. -->
     <files_dir>files/</files_dir><!-- Where the uploaded files are kept relative to base_location. -->

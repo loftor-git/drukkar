@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="favicon.ico">
     <title><?php echo $blog_title; ?></title>
     <style type="text/css" media="all">
         @import "blog.css";
