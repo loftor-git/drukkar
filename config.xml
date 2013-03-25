@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hi! This is your blog's configuration file. You must at least set a correct base_location and change the password here before use. -->
+<blog>
+    <base_location>/</base_location><!-- Specifies where Drukkar is located on your server. -->
+    <entries_dir>entries/</entries_dir><!-- Where entries are kept relative to base_location. -->
+    <files_dir>files/</files_dir><!-- Where the uploaded files are kept relative to base_location. -->
+
+    <title>BLOG TITLE HERE</title><!-- Blog's title. Always visible at the top. -->
+    <subtitle></subtitle><!-- Displayed right under the title. -->
+    <password>696d29e0940a4957748fe3fc9efd22a3</password><!-- The salted hash of your password goes here. Use makepass.php to calculate it. -->
+    <salt></salt><!-- Type something random in here to improve how well your password is encrypted. -->
+    <session_length>600</session_length><!-- How much time in seconds it takes for your log-in session to expire. -->
+    
+    <entries_per_page>10</entries_per_page><!-- How many entries you want displayed per one page of your blog. -->
+    <entries_per_page_for_tags_and_search>999</entries_per_page_for_tags_and_search><!-- Same as above but for searches and viewing all entries with a centain tag. -->
+    
+    <entry_links_with_titles>1</entry_links_with_titles><!-- Makes every entry's title a link. Handy for copying. -->
+    
+    <locale>en</locale><!-- What languages Drukkar's messages are displayed in. The corresponding loc_xx.php file must exist under /inc/. -->
+    <date_format>d/m/Y H:i:s</date_format><!-- See http://php.net/manual/en/datetime.format.php for how this works. -->
+    <entry_date_from_file_name>0</entry_date_from_file_name><!-- If you set this to 1 instead of using each entry's date field Drukkar will try to parse its file name as a date. Useful in some semi-exotic cases. -->
+    
+    <search_enabled>1</search_enabled><!-- Set to 0 to have no search. -->
+</blog>

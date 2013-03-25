@@ -1,0 +1,130 @@
+body {
+    color: black; 
+    background-color: #f5f5f5;
+    font-family: Georgia, Serif;
+    background-image: "1.jpg"; 
+}
+
+div#container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+}
+
+div.text {
+   # padding-left: 20px;
+   # padding-right: 20px;
+   text-indent: 2.5em;   
+}
+
+td#header {
+    width: 800px;
+    border: 1px solid #999999;
+    background-color: #ffffff;
+    padding-left: 10px;    
+    padding-right: 10px;       
+}
+
+h1#title {
+    text-align: center;
+}
+
+h2 {
+   text-indent: 0px
+}
+
+h2.entrytitle {
+  #  padding-left: 25px;    
+  #   padding-right: 25px;;   
+}
+
+h3 {
+   text-indent: 0px;   
+}
+
+h4 {
+   text-indent: 0px;   
+}
+
+p#subtitle {
+    text-align: center;
+    padding: 5px;
+}
+
+td#search {
+    width: 800px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+div#searchform {
+    width: 700px;
+    text-align: center;
+    border: 1px solid #999999;
+    background-color: #ffffff;    
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 10px;   
+    padding-right: 10px;
+    margin-left:auto;
+    margin-right:auto;       
+}
+
+td#content {
+    width: 800px;
+    border: 1px solid #999999;
+    background-color: #ffffff;
+    padding: 10px;
+}
+
+td#footer {
+    text-align: center;
+    padding-top: 5px;
+    font-size: 75%;
+}
+
+table#main {
+/*    background-color: #ffffff;
+    border: 1px solid #999999;  */
+}
+
+a {
+    text-decoration: none;
+    color: #0000FF;
+}
+
+a:hover {
+    color: #000066;
+}
+
+a:active {
+    color: red;
+}
+
+a:visited {
+    color: #581C90;
+}
+
+a#prevpagelink {
+    float: left;
+}
+
+a#nextpagelink {
+    float: right;
+}
+
+a#logout {
+    float: right;
+}
+
+a.titlelink {
+    color: black;
+}
+
+span.error {
+    color: red;
+}
+
+span.actionbuttons {
+    float: right;
+}
