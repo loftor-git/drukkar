@@ -20,6 +20,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 */
 
+/** @file index.php
+    @brief Post viewer
+*/
+
 $me = "index.php";
 header('Content-type: text/html; charset=utf-8');
 
@@ -60,14 +64,14 @@ if ($form['post']) {
                 
                 $entry = entry_load($file);
                 
-                if ($form['tag'] === '_excluded' || entry_find_tag('_hidden', $entry)) {
+                if ($form['tag'] === '_excluded' || entry_check_tag('_hidden', $entry)) {
                         return false;
                 }                
                 
                 $t = True; // $t indicates whether to display the current entry.
                 
                 if ($form['tag']) { // If we've been given a tag filter out entries without it.
-                    $t = $t && entry_find_tag($form['tag'], $entry);
+                    $t = $t && entry_check_tag($form['tag'], $entry);
                 }
                 
                 if ($form['search'] && $blog_search_enabled) { // We look for a string in each entry's text, title, date and file names.
@@ -75,7 +79,7 @@ if ($form['post']) {
                 }
                 
                 if (!$form['tag'] && !$form['search']) { // Hide excluded entries if not searching or viewing posts by tag
-                    $t = $t /*&& !entry_find_tag('_hidden', $entry)*/ && !entry_find_tag('_excluded', $entry);
+                    $t = $t /*&& !entry_check_tag('_hidden', $entry)*/ && !entry_check_tag('_excluded', $entry);
                 }
 
                 return $t;

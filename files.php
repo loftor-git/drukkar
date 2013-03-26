@@ -20,6 +20,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 */
 
+/** @file files.php
+*   @brief A file manager for uploaded and entry files.
+*/
+
 header('Content-type: text/html; charset=utf-8');
 
 session_start();

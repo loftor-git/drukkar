@@ -20,6 +20,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 */
 
+/** @file edit.php
+*   @brief Blog entry editor.
+*/
+
 header('Content-type: text/html; charset=utf-8');
 
 session_start();

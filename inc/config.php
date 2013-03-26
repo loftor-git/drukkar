@@ -20,6 +20,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 */
 
+/** @file config.php
+*   @brief Reads the configuration from config.xml into $blog_option_name variables.
+*/
+
 $version = "1.08"; // Drukkar version
 
 $blog_settings = simplexml_load_file("config.xml");
@@ -43,6 +47,9 @@ $blog_search_enabled = (bool) (int) $blog_settings->search_enabled;
 $blog_show_dates = (bool) (int) $blog_settings->show_dates;
 $blog_base_location = (string) $blog_settings->base_location;
 $blog_base_url = (string) $blog_settings->base_url;
+$blog_time_zone = (string) $blog_settings->time_zone;
+
+date_default_timezone_set($blog_time_zone);
 
 include("loc_$blog_locale.php");
 

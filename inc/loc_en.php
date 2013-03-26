@@ -20,6 +20,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 */
 
+/** @file loc_en.php
+*   @brief English locale strings file.
+*/
+
 $loc_password = "Password";
 $loc_submit = "Submit";
 $loc_search = "Search";

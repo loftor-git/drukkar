@@ -20,13 +20,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 */
 
-/** Converts a list into a string that contains the list's items, each enclosed within tags.
-*   @param array $list a list of items to convert
-*   @param string $left the tag to put on the left of each item
-*   @param string $right the tag to put on the right of each item
-*   @return string
+/** @file lib.php
+*   @brief A library of functions shared accross all of Drukkar.
 */
 
+/**
+*   @brief Concatenate $list, placing each item between $left and $right
+
+This function returns a string that contains of every item on $list, each enclosed between $left and $right, which are presumed to contain an opening and a closing XML tag respectively.
+*   @param array $list a list of items to process
+*   @param string $left the opening tag to put on the left of each item
+*   @param string $right the closing tag to put on the right of each item
+*   @return string
+*/
 function list_to_xml($list, $left, $right) {
     $result = "";
     
@@ -38,7 +44,7 @@ function list_to_xml($list, $left, $right) {
     return $result;
 }
 
-/** Returns all of entry's files.
+/** @brief Return all the files linked to by an entry
 *   @param object $entry entry as a SimpleXMLElement object
 *   @return array
 */
@@ -52,23 +58,23 @@ function entry_files($entry) {
     return $files;
 }
 
-/** Checks whether an entry has a specific tag
-*   @param string $what the tag to find
-*   @param array $where entry as a SimpleXMLElement object
+/** @brief Check whether an entry has a specific tag
+*   @param string $tag the tag to find
+*   @param array $entry entry as a SimpleXMLElement object
 *   @return boolean
 */
-function entry_find_tag($what, $where) {
-    $found = 0;
-    foreach ($where->tag as $key => $value)
-        if ((string) $value === (string) $what)
-            $found = 1;
+function entry_check_tag($tag, $entry) {
+    $found = false;
+    foreach ($entry->tag as $key => $value)
+        if ((string) $value === (string) $tag)
+            $found = true;
 
     return $found;
 }
 
-/** Formats an entry for output
+/** @brief Formats an entry for output
 *   @param object $entry entry as a SimpleXMLElement object
-*   @param string $entry_id given entry's id that's used for linking to it
+*   @param string $entry_id the given entry's id that's used for linking to it
 *   @param string $link_target target for the link to view this particular entry
 *   @return string
 */
@@ -91,7 +97,7 @@ function entry_format($entry, $entry_id, $link_target = "index.php", $base_dir =
     "</div><p class=\"files\">$files</p>" . ($GLOBALS['blog_show_dates'] ? "<p class=\"date\">" . date($GLOBALS['blog_date_format'], (int) $entry->date) . "</p>" : "") . (strlen($tags) != 0 ? "<p class=\"tags\">Tags: $tags</p>" : "");
 }
 
-/** Sanitizes a file's name replacing special symbols with dashes
+/** @brief Sanitize a file name replacing special symbols with dashes
 *   @param string $string the string to be sanitized
 *   @return string
 */
@@ -101,9 +107,9 @@ function sanitize_file_name($string, $language = "ukrainian") {
     return preg_replace('/--+/u', '-', $string); # Compress repeating dashes.
 }
 
-/** Transliterates Cyrillic into Latin script
+/** @brief Transliterate Cyrillic text into English Latin script
 *   @param string $string the string to be transliterated
-*   @param string $language chooses between Ukrainian and Russian transliteration
+*   @param string $language chooses between transliteration from Ukrainian and from Russian
 *   @return string
 */
 function transliterate($string = '', $language = "ukrainian") {
@@ -146,10 +152,11 @@ function transliterate($string = '', $language = "ukrainian") {
 
 }
 
-/** Handles the newly-uploaded files in a uniform way
+/** @brief Handle newly-uploaded files in a uniform way
 *   @param array $uploaded_files a $_FILES construction to be processed
 *   @param string $translit_language transliteration language
 *   @param string $directory target directory
+*   @return array
 */
 function process_uploaded_files($uploaded_files, $translit_language = 'ukrainian', $directory = 'files/') {
     $files = ""; // File list in XML
@@ -172,10 +179,11 @@ function process_uploaded_files($uploaded_files, $translit_language = 'ukrainian
     return $files;
 }
 
-/** Converts a date represented by a formatted string into a Unix timestamp
+/** @brief Convert a date represented as a formatted string into a UNIX timestamp
 *   @param string $format the format that the date is in
 *   @param string $date_to_process self-explanatory
 *   @param mixed $result_on_error the result to return should the coversion fail
+*   @return int
 */
 function string_to_time($format, $date_to_process, $result_on_error = false) {
     $d = date_parse_from_format($format, $date_to_process);
@@ -184,7 +192,8 @@ function string_to_time($format, $date_to_process, $result_on_error = false) {
     return mktime($d['hour'], $d['minute'], $d['second'], $d['month'], $d['day'], $d['year']);
 }
 
-/** Creates a new, blank blog entry
+/** @brief Creates a new, blank blog entry object
+*   @return object
 */
 function entry_new() {
     $entry = new stdClass();
@@ -196,8 +205,9 @@ function entry_new() {
     return $entry;
 }
 
-/** Loads the blog entry from an XML file
+/** @brief Load the blog entry from an XML file
 *   @param string $file file name
+*   @return object
 */
 function entry_load($file) {
     $entry = simplexml_load_file($file);
@@ -214,7 +224,7 @@ function entry_load($file) {
     return $entry;
 }
 
-/** Saves a blog entry to an XML file
+/** @brief Save a blog entry to an XML file
 *   @param string $file_name file name
 *   @param string $format "html", "markdown" or "plain" for plain text
 *   @param string $title
@@ -222,6 +232,7 @@ function entry_load($file) {
 *   @param string $tags
 *   @param string $date
 *   @param string $date_backup used when $date is malformatted or absent
+*   @return int
 */
 function entry_save($file_name, $format, $title, $text, $tags, $files, $date, $date_backup) {
     $processed_date = string_to_time($GLOBALS['blog_date_format'], $date);
@@ -241,9 +252,10 @@ function entry_save($file_name, $format, $title, $text, $tags, $files, $date, $d
 </entry>");
 }
 
-/** Processes a _GET or _POST form replacing missing data with "false"
-*   @param array &$form
-*   @param array $get_or_post
+/** @brief Put _GET or _POST data into a form replacing missing data with "false"
+*   @param array &$form The form to fill
+*   @param array $get_or_post _GET or _POST data
+*   @return array
 */
 function process_form(&$form, $get_or_post) {
         $form_new = array();
@@ -254,9 +266,10 @@ function process_form(&$form, $get_or_post) {
 }
 
 
-/** Processes a _GET or _POST form replacing missing data with "false"
-*   @param array &$form
-*   @param array $get_or_post
+/** @brief Returns a salted cryptographic hash of the given password
+*   @param string $pass the password to hash
+*   @param string $salt the cryptographic salt
+*   @return string
 */
 function hash_with_salt($pass, $salt = "") {
         return md5(md5($pass) . $salt);

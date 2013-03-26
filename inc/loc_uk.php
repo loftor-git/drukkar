@@ -20,6 +20,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 */
 
+/** @file loc_uk.php
+*   @brief Ukrainian locale strings file.
+*/
+
 $loc_password = "Пароль";
 $loc_submit = "Надіслати";
 $loc_search = "Шукати";

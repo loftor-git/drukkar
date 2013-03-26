@@ -23,4 +23,5 @@
     
     <search_enabled>1</search_enabled><!-- Set to 0 to have no search. -->
     <show_dates>1</show_dates><!-- Set to 0 to have no date shown on any of your entries. -->
+    <time_zone>UTC</time_zone><!-- Set this to your time zone. -->
 </blog>
