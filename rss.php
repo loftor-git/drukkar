@@ -24,8 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 *   @brief Provides an RSS feed.
 */
 
-
+//! What this file is called.
 $me = "rss.php";
+
 header('Content-type: application/rss+xml');
 
 include("inc/config.php");

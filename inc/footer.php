@@ -2,7 +2,7 @@
 /* 
 
 Drukkar, a small blogging platform
-Copyright (C) 2011-2012 Danyil Bohdan
+Copyright (C) 2011-2013 Danyil Bohdan
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 /** @file footer.php
-*   @brief Blog footer. Contains what is displayed at the bottom of the page beneath the blog entries and closes the HTML document.
+*   @brief Blog footer. Contains what is displayed at the bottom of the page (beneath the blog entries) and closes the HTML document.
 */
 
 echo <<<ENDFOOTER

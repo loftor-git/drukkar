@@ -21,19 +21,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 /** @file lib.php
-*   @brief A library of functions shared accross all of Drukkar.
+*   @brief A library of functions shared accross many components of Drukkar.
 */
 
 /**
-*   @brief Concatenate $list, placing each item between $left and $right
+*   @brief Puts each item of the of $list in $tag and concatenates the result.
+*   @param array $list a list of items to process
+*   @return string
+*/
+function list_to_xml($list, $tag) {
+    return list_to_string($list, "<$tag>", "</$tag>");
+}
 
-This function returns a string that contains of every item on $list, each enclosed between $left and $right, which are presumed to contain an opening and a closing XML tag respectively.
+/**
+*   @brief Concatenate $list, placing each item between $left and $right
+*
+* This function returns a string that contains of every item on $list, each enclosed between $left and $right, which are presumed to contain an opening and a closing XML tag respectively.
 *   @param array $list a list of items to process
 *   @param string $left the opening tag to put on the left of each item
 *   @param string $right the closing tag to put on the right of each item
 *   @return string
 */
-function list_to_xml($list, $left, $right) {
+function list_to_string($list, $left, $right) {
     $result = "";
     
     foreach (explode("\r\n", rtrim($list)) as $i) {
@@ -44,7 +53,7 @@ function list_to_xml($list, $left, $right) {
     return $result;
 }
 
-/** @brief Return all the files linked to by an entry
+/** @brief Returns all the files linked to by an entry
 *   @param object $entry entry as a SimpleXMLElement object
 *   @return array
 */
@@ -59,7 +68,7 @@ function entry_files($entry) {
 }
 
 /** @brief Check whether an entry has a specific tag
-*   @param string $tag the tag to find
+*   @param string $tag the tag to check for
 *   @param array $entry entry as a SimpleXMLElement object
 *   @return boolean
 */
@@ -225,6 +234,8 @@ function entry_load($file) {
 }
 
 /** @brief Save a blog entry to an XML file
+*
+*   Returns the result of calling file_put_contents.
 *   @param string $file_name file name
 *   @param string $format "html", "markdown" or "plain" for plain text
 *   @param string $title
@@ -252,7 +263,9 @@ function entry_save($file_name, $format, $title, $text, $tags, $files, $date, $d
 </entry>");
 }
 
-/** @brief Put _GET or _POST data into a form replacing missing data with "false"
+/** @brief Put _GET or _POST data into the appropriate fields of $form.
+*
+*   Fields in $form for which there is no data in $get_or_post are filled with (bool) false.
 *   @param array &$form The form to fill
 *   @param array $get_or_post _GET or _POST data
 *   @return array
@@ -266,7 +279,7 @@ function process_form(&$form, $get_or_post) {
 }
 
 
-/** @brief Returns a salted cryptographic hash of the given password
+/** @brief Returns a salted cryptographic hash of a given password
 *   @param string $pass the password to hash
 *   @param string $salt the cryptographic salt
 *   @return string

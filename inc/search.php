@@ -2,7 +2,7 @@
 /* 
 
 Drukkar, a small blogging platform
-Copyright (C) 2011-2012 Danyil Bohdan
+Copyright (C) 2011-2013 Danyil Bohdan
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -26,10 +26,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 *   Put the relevant code here if you want to custom search features (like Site Search) or a menu to be displayed above the enties in your blog.
 */
 
-if ($blog_search_enabled == 1) {
+if ($blog_search_enabled) {
     echo '<tr><td id="search"><form action="index.php"><div id="searchform"><input type="text" name="search" size=50><input type="submit" value="' . $loc_search . '"></div></form></td></tr>';
 } else {
-    // Custom search code goes here, e.g., Google website search. Either that or nothing to only have built-in search.
+    // Custom search code goes here, e.g., Google website search. This is also a good place to put a menu with links to your _excluded pages (e.g., "About me" and "Contacts").
     echo <<<CUSTOMSEARCH
 
 CUSTOMSEARCH;

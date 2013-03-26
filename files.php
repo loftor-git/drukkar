@@ -2,7 +2,7 @@
 /* 
 
 Drukkar, a small blogging platform
-Copyright (C) 2011-2012 Danyil Bohdan
+Copyright (C) 2011-2013 Danyil Bohdan
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 /** @file files.php
-*   @brief A file manager for uploaded and entry files.
+*   @brief File manager for uploaded files and entries' XML files.
 */
 
 header('Content-type: text/html; charset=utf-8');
@@ -33,7 +33,8 @@ if (!isset($_SESSION['initiated'])) { // This helps prevent session fixation att
     $_SESSION['initiated'] = true;
 }
 
-$me = "files.php"; // How this file is named.
+//! What this file is called.
+$me = "files.php";
 
 include("inc/config.php");
 include("inc/lib.php");

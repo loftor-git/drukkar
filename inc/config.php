@@ -24,7 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 *   @brief Reads the configuration from config.xml into $blog_option_name variables.
 */
 
-$version = "1.08"; // Drukkar version
+//! The current version of Drukkar version
+$version = "1.09";
 
 $blog_settings = simplexml_load_file("config.xml");
 #var_dump($blog_settings);
@@ -37,7 +38,7 @@ $blog_password = (string) $blog_settings->password;
 $blog_salt = (string) $blog_settings->salt;
 $blog_session_length = (int) $blog_settings->session_length;
 $blog_entries_per_page = (int) $blog_settings->entries_per_page;
-$entries_per_page_for_tags_and_search = (int) $blog_settings->entries_per_page_for_tags_and_search;
+$blog_entries_per_page_for_tags_and_search = (int) $blog_settings->entries_per_page_for_tags_and_search;
 $blog_locale = (string) $blog_settings->locale;
 $blog_entry_links_with_titles = (bool) (int) $blog_settings->entry_links_with_titles;
 $blog_date_format = (string) $blog_settings->date_format;

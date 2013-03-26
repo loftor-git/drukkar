@@ -2,7 +2,7 @@
 /* 
 
 Drukkar, a small blogging platform
-Copyright (C) 2011-2012 Danyil Bohdan
+Copyright (C) 2011-2013 Danyil Bohdan
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -36,7 +36,8 @@ if (!isset($_SESSION['initiated'])) { // This helps prevent session fixation att
 include("inc/config.php");
 include("inc/lib.php");
 
-$me = $blog_base_location . "edit.php";
+//! How this file is named.
+$me = "edit.php";
 
 // Mostly-HTML header
 include("inc/header.php");
@@ -97,7 +98,7 @@ if (isset($_SESSION['is_logged_in'])) {
         if ((string) $form_post['submit'] === $loc_save) {
             // Save the form that the user submitted to a file
             $uploaded_files = process_uploaded_files($_FILES, $form_post['translit'], $blog_files_dir);
-            if (entry_save($blog_entries_dir . $file_to_edit, $form_post['format'], $form_post['title'], $form_post['text'], list_to_xml($form_post['tags'], "<tag>", "</tag>"), list_to_xml($form_post['files'], "<file>", "</file>") . $uploaded_files, $form_post['date'], $form_post['date_backup'])) {
+            if (entry_save($blog_entries_dir . $file_to_edit, $form_post['format'], $form_post['title'], $form_post['text'], list_to_xml($form_post['tags'], "tag"), list_to_xml($form_post['files'], "file") . $uploaded_files, $form_post['date'], $form_post['date_backup'])) {
                 echo $loc_edit_saved;
                 $entry_exists = True;
             } else {
