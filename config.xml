@@ -24,4 +24,6 @@
     <search_enabled>1</search_enabled><!-- Set to 0 to have no search. -->
     <show_dates>1</show_dates><!-- Set to 0 to have no dates shown on any of your entries. -->
     <time_zone>UTC</time_zone><!-- Set this to your time zone. You can see the list of time zones at http://php.net/manual/en/timezones.php. -->
+    <caching_enabled>1</caching_enabled>
+    <cache_searches>0</cache_searches>    
 </blog>

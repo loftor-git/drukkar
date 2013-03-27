@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 //! The current version of Drukkar version
-$version = "1.09";
+$version = "1.10";
 
 $blog_settings = simplexml_load_file("config.xml");
 #var_dump($blog_settings);
@@ -49,6 +49,8 @@ $blog_show_dates = (bool) (int) $blog_settings->show_dates;
 $blog_base_location = (string) $blog_settings->base_location;
 $blog_base_url = (string) $blog_settings->base_url;
 $blog_time_zone = (string) $blog_settings->time_zone;
+$blog_caching_enabled = (string) $blog_settings->caching_enabled;
+$blog_cache_searches = (string) $blog_settings->cache_searches;
 
 date_default_timezone_set($blog_time_zone);
 

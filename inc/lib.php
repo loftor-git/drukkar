@@ -288,4 +288,12 @@ function hash_with_salt($pass, $salt = "") {
         return md5(md5($pass) . $salt);
 }
 
+/** @brief blah a salted cryptographic hash of a given password
+*   @param string $cache_file_name
+*   @return boolean
+*/
+function cache_is_current($cache_file_name) {
+        return true; // newer than *.php and inc/*.php and entries/*.xml and config.xml
+}
+
 ?>
