@@ -39,7 +39,7 @@ include("inc/lib.php");
 //! How this file is named.
 $me = "edit.php";
 
-// Mostly-HTML header
+// The header. It's mostly HTML with little logic.
 include("inc/header.php");
 
 echo '<tr><td id="content">';
@@ -159,7 +159,7 @@ if (isset($_SESSION['is_logged_in'])) {
 
 echo '</td></tr>';
 
-// Mostly-HTML footer
+// A mostly-HTML footer
 include("inc/footer.php")
 
 ?>

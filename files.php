@@ -39,7 +39,7 @@ $me = "files.php";
 include("inc/config.php");
 include("inc/lib.php");
 
-// A mostly-HTML header
+// The header. It's mostly HTML with little logic.
 include("inc/header.php");
 
 echo '<tr><td id="content">';

@@ -33,7 +33,7 @@ include("inc/lib.php");
 include("inc/markdown/markdown.php");
 
 
-// The mostly-HTML header
+// The header. It's mostly HTML with little logic.
 include("inc/header.php");
 
 // Search form
@@ -127,7 +127,7 @@ if ($form['post']) {
 
 echo "</td></tr>";
 
-// The mostly-HTML footer
+// A mostly-HTML footer
 include("inc/footer.php");
 
 ?>

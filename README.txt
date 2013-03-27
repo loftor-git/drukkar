@@ -1,1 +1,0 @@
-Pick up the documentation at http://drukkar.sourceforge.net/.
