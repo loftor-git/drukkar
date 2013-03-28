@@ -271,11 +271,11 @@ function entry_save($file_name, $format, $title, $text, $tags, $files, $date, $d
 *   @return array
 */
 function process_form(&$form, $get_or_post) {
-        $form_new = array();
-        foreach ($form as $var) {
-                $form_new[$var] = ((isset($get_or_post) && array_key_exists($var, $get_or_post)) ? $get_or_post[$var] : false);
-        }
-        $form = $form_new;
+    $form_new = array();
+    foreach ($form as $var) {
+        $form_new[$var] = ((isset($get_or_post) && array_key_exists($var, $get_or_post)) ? $get_or_post[$var] : false);
+    }
+    $form = $form_new;
 }
 
 
@@ -285,15 +285,28 @@ function process_form(&$form, $get_or_post) {
 *   @return string
 */
 function hash_with_salt($pass, $salt = "") {
-        return md5(md5($pass) . $salt);
+    return md5(md5($pass) . $salt);
 }
 
-/** @brief blah a salted cryptographic hash of a given password
-*   @param string $cache_file_name
+/** @brief Check if a cache file is newer than files used to generate output.
+*
+*   This returns whether the file is newer than *.php, inc/*.php, entries/*.xml and config.xml.
+*   @param string $cache_file_name cache file name
 *   @return boolean
 */
 function cache_is_current($cache_file_name) {
-        return true; // newer than *.php and inc/*.php and entries/*.xml and config.xml
+    if (!file_exists($cache_file_name)) {
+        return false;
+    }
+
+    $cache_mtime = filemtime($cache_file_name);
+    foreach (array_merge(glob("*.php"), glob("inc/*.php"), glob($GLOBALS['blog_entries_dir'] . "*.xml"), array("config.xml")) as $file) {
+        if (filemtime($file) > $cache_mtime) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 ?>

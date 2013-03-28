@@ -22,6 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 /** @file makepass.php
 *   @brief Generates salted passwords for use in config.xml.
+*
+*   Remove this from your server one you've set the password.
 */
 
 //! What this file is called.

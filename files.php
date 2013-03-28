@@ -52,7 +52,7 @@ process_form($form_get, $_GET);
 
 $form_post['password'] = htmlspecialchars($form_post['password']);
 
-$dirs = array("$blog_files_dir" => $blog_files_dir, "$blog_entries_dir" => $blog_entries_dir); // Here we define the directories that are to be accessable via web interface. The format is "displayed_name" => "actual_location".
+$dirs = array("$blog_files_dir" => $blog_files_dir, "$blog_entries_dir" => $blog_entries_dir, "$blog_cache_dir" => $blog_cache_dir); // Here we define the directories that will be accessable via web interface. The format is "displayed_name" => "actual_location".
 
 if (in_array($form_get['dir'], $dirs))
     $directory = $dirs[$form_get['dir']];

@@ -32,6 +32,7 @@ $blog_settings = simplexml_load_file("config.xml");
 
 $blog_entries_dir = (string) $blog_settings->entries_dir;
 $blog_files_dir = (string) $blog_settings->files_dir;
+$blog_cache_dir = (string) $blog_settings->cache_dir;
 $blog_title = (string) $blog_settings->title;
 $blog_subtitle = (string) $blog_settings->subtitle;
 $blog_password = (string) $blog_settings->password;

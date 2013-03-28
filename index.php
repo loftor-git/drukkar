@@ -41,12 +41,12 @@ if ($post) {
     $form['search'] = false;
 }
 
-//! What are we caching?
+//! Uniquely identifies the blog entry we're caching.
 $cache_id = str_replace("\n", "", var_export($form, true));
-//! Cache file naming is an ugly hack.
-$cache_file_name = /* $blog_base_location . */ "cache/" . md5($cache_id) . ".html";
+//! Cache file naming is something of a hack.
+$cache_file_name = /* $blog_base_location . */ $blog_cache_dir . md5($cache_id) . ".html";
 
-if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches) && file_exists($cache_file_name) && cache_is_current($cache_file_name)) {
+if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches) && cache_is_current($cache_file_name)) {
     $cache_file_in = fopen($cache_file_name, 'r');
     fgets($cache_file_in); // Skip the first line.
     fpassthru($cache_file_in);
