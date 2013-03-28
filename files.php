@@ -77,7 +77,7 @@ if (isset($_SESSION['last_activity']) && time() - $_SESSION['last_activity'] > $
 }
 
 echo <<< END
-<script language="JavaScript" type="text/JavaScript">
+<script type="text/javascript">
 function fdelete(file) {
 if (confirm('$loc_delete_prompt_file'.replace('%s', file))) {
         document.form.action.value = "delete";
@@ -95,6 +95,37 @@ function frename(file) {
         document.form.submit();
     }
 }
+
+function fview(file) {
+    document.form.action.value = "view";
+    document.form.file.value = file;
+    document.form.submit();
+}
+
+function fmtcode() {
+    var preElements = document.getElementsByTagName("pre");
+    for (p in preElements) {
+        if (p >= 0) {
+            var pre = preElements[p];
+            var lines = pre.innerHTML.split('\\n');
+            var newEl = document.createElement('div');
+            newEl.className = "source";
+            for (line in lines) {
+                newDiv = document.createElement('div');
+                newDiv.className = (line % 2 == 0 ? 'even' : 'odd' ) + 'line';
+                newDiv.innerHTML = lines[line];
+                newSpan = document.createElement('span');
+                newSpan.className = 'linenumber';
+                newSpan.innerHTML = line;
+                newEl.appendChild(newSpan);
+                newEl.appendChild(newDiv);
+            }
+            pre.parentNode.replaceChild(newEl, pre);
+        }
+    }
+}
+
+window.addEventListener('load', fmtcode, false);
 </script>
 END;
 
@@ -126,6 +157,11 @@ if (isset($_SESSION['is_logged_in'])) {
                     if (rename($directory . $file_name, $directory . $new_name))
                         printf($loc_file_renamed, $file_name, $new_name);
                     break;
+                case "view":
+                    echo "$file_name:<br><pre class=\"source\">\n";
+                    echo htmlspecialchars(file_get_contents($directory . $file_name));
+                    echo "</pre><hr>\n";
+                    break;
             }
         } else {
             echo "<span class=\"error\">$loc_file_not_found $file_name.</span>";
@@ -141,7 +177,7 @@ if (isset($_SESSION['is_logged_in'])) {
     
     foreach (glob($directory . "*") as $file) {
         $file = basename($file);
-        echo "<p><span class=\"actionbuttons\"><input type=\"button\" onClick=\"javascript:frename('$file');\" value=\"$loc_rename\">&nbsp;<input type=\"button\" onClick=\"javascript:fdelete('$file');\" value=\"$loc_delete\"></span> <a href=\"$directory$file\">$file</a></p>";
+        echo "<p><span class=\"actionbuttons\"><input type=\"button\" onClick=\"javascript:fview('$file');\" value=\"$loc_view\">&nbsp;<input type=\"button\" onClick=\"javascript:frename('$file');\" value=\"$loc_rename\">&nbsp;<input type=\"button\" onClick=\"javascript:fdelete('$file');\" value=\"$loc_delete\"></span> <a href=\"$directory$file\">$file</a></p>";
     }
     echo "<hr><p>$loc_upload<br><input type=\"file\" name=\"file1\"><br><input type=\"file\" name=\"file2\"><br><input type=\"file\" name=\"file3\"></p>
     <p>$loc_translit<br><input type=\"radio\" name=\"translit\" value=\"russian\">&nbsp;$loc_russian <input type=\"radio\" name=\"translit\" value=\"ukrainian\" checked>&nbsp;$loc_ukrainian</p>   

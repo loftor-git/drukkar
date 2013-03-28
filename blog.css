@@ -105,6 +105,49 @@ table#main {
     border: 1px solid #999999;  */
 }
 
+pre.source {
+	overflow: auto;
+	white-space: pre-wrap;                  /* CSS 3 browsers  */
+	white-space: -moz-pre-wrap !important; /* 1999+ Mozilla  */
+	white-space: -pre-wrap;                 /* Opera 4-6 */
+	white-space: -o-pre-wrap;               /* Opera 7+ */
+	word-wrap: break-word;                  /* IE 5.5+ */
+	width: 760px;
+}
+
+div.source {
+	overflow: auto;
+	white-space: pre-wrap;                  /* CSS 3 browsers  */
+	white-space: -moz-pre-wrap !important; /* 1999+ Mozilla  */
+	white-space: -pre-wrap;                 /* Opera 4-6 */
+	white-space: -o-pre-wrap;               /* Opera 7+ */
+	word-wrap: break-word;                  /* IE 5.5+ */
+	width: 760px;
+    font-family: mono;
+}
+
+.evenline {
+    background-color: #f0f0f0;
+    padding-left: 50px;
+}
+
+.oddline {
+    background-color: #ffffff;
+    padding-left: 50px;
+}
+
+.linenumber {
+    float: left;
+    font-size: 85%;
+    color: #333333;
+}
+
+td#footer {
+    text-align: center;
+    padding-top: 5px;
+    font-size: 75%;
+}
+
 a {
     text-decoration: none;
     color: #0000FF;

@@ -62,6 +62,7 @@ $loc_delete_prompt_file = "Are you sure you want to delete %s?";
 $loc_file_deleted = "The file %s has been deleted.";
 $loc_rename = "Rename";
 $loc_rename_prompt = "Input new file name:";
+$loc_view = "View";
 $loc_file_renamed = "The file %s has been renamed to %s.";
 $loc_back = "Back";
 $loc_next_page = "Next page";

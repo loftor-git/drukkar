@@ -62,6 +62,7 @@ $loc_delete_prompt_file = "Ви певні, що хочете вилучити %
 $loc_file_deleted  = "Файл вилучено: %s.";
 $loc_rename = "Перейменувати";
 $loc_rename_prompt = "Введіть нове ім’я файла:";
+$loc_view = "Переглянути";
 $loc_file_renamed  = "Файл %s перейменовано на %s.";
 $loc_back = "Назад";
 $loc_next_page = "Новіші записи >";
