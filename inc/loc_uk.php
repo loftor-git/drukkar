@@ -21,8 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 /** @file loc_uk.php
-*   @brief Locale strings file for Ukrainian
-*/
+ *   @brief Locale strings file for Ukrainian
+ */
 
 $loc_password = "Пароль";
 $loc_submit = "Надіслати";
@@ -42,10 +42,13 @@ $loc_saving_failed = "Файл не вдалося зберегти!";
 $loc_upload = "Завантажити файли:";
 $loc_file_uploaded = "Файл <tt>%s</tt> завантажено як <tt>%s</tt>.";
 $loc_uploading_failed = "Не вдалося завантажити файл <tt>%s</tt>.";
-$loc_uploading_failed_file_exists = "Не вдалося завантажити файл <tt>%s</tt>: файл вже існує";
+$loc_uploading_failed_file_exists = "Не вдалося завантажити файл <tt>%s</tt>:
+ файл вже існує";
 $loc_file_not_found = "Файл не знайдено:";
 $loc_invalid_date = "Дата %s неправильна; збережено попередню дату: %s.";
-$loc_makepass_warning = "Увага! <i>Не</i> використовуйте цього скрипту на дистанційному сервері через ненадійний канал зв’язку. Натомість, запустіть його локально, щоб згенерувати свій пароль.";
+$loc_makepass_warning = "Увага! <i>Не</i> використовуйте цього скрипту на
+ дистанційному сервері через ненадійний канал зв’язку. Натомість, запустіть
+ його локально, щоб згенерувати свій пароль.";
 $loc_put_this_in_config_file = "Перепишіть це у ваш файл <tt>config.xml</tt>:";
 $loc_directories = "Теки:";
 $loc_log_out = "[ Вийти ]";

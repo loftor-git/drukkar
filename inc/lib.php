@@ -107,8 +107,8 @@ function entry_format($entry, $entry_id, $link_target = "index.php",
     }
     $tags = substr($tags, 0, -2);
     
-    return "<h2 class=\"entrytitle\"><a class=\"titlelink\" href=\"" .
-    "$link_target?post=" . htmlspecialchars($entry_id) .
+    return "<h2 class=\"entrytitle\"><a class=\"titlelink\" href=\"
+$link_target?post=" . htmlspecialchars($entry_id) .
     ($GLOBALS['blog_entry_links_with_titles'] ? "-" .
     sanitize_file_name(strip_tags($entry->title)) : "") . "\">" .
     ((string) $entry->format === "html" ? $entry->title :

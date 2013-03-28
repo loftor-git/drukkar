@@ -21,10 +21,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 /** @file makedirs.php
-*   @brief Creates directories for files, entries and cache.
-*
-*   This is useful when you can't chmod/chown the directries to make them writable for your web server's *nix user.
-*/
+ *  @brief Creates directories for files, entries and cache.
+ *
+ *  This is useful when you can't chmod/chown the directries to make them
+ *  writable for your web server's *nix user.
+ */
 
 //! What this file is called.
 $me = "makedirs.php";
@@ -55,7 +56,9 @@ foreach ($dirs as $dir) {
 }
 
 if ($t) {
-    echo "Success! Once you've placed a correct <tt>.htaccess</tt> in each directory and made sure that everything works don't forget to remove <tt>$me</tt> from your server.";
+    echo "Success! Once you've placed a correct <tt>.htaccess</tt> in each
+directory and made sure that everything works don't forget to remove
+<tt>$me</tt> from your server.";
 }
 
 echo "</td></tr>";

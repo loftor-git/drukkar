@@ -21,10 +21,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 /** @file makepass.php
-*   @brief Generates salted passwords for use in config.xml.
-*
-*   Remove this from your server one you've set the password.
-*/
+ *  @brief Generates salted passwords for use in config.xml.
+ *
+ *  Remove this from your server one you've set the password.
+ */
 
 //! What this file is called.
 $me = "makepass.php";
@@ -41,10 +41,22 @@ $form_post = array("password", "salt");
 
 process_form($form_post, $_POST);
 
-echo "<tr><td id=\"content\"><h2>$loc_makepass_warning</h2><div><form action=\"${blog_base_location}$me\" method=\"POST\"><table><tr><td>$loc_password:</td><td><input type=password name=password></td></tr><tr><td>$loc_salt:</td><td><input type=text name=salt></td></tr><tr><td><input type=submit value=\"$loc_submit\"></td></td></table></form></div>";
+echo "<tr><td id=\"content\">
+<h2>$loc_makepass_warning</h2>
+<div><form action=\"${blog_base_location}$me\" method=\"POST\">
+<table>
+<tr><td>$loc_password:</td>
+<td><input type=password name=password></td></tr>
+<tr><td>$loc_salt:</td>
+<td><input type=text name=salt></td></tr>
+<tr><td><input type=submit value=\"$loc_submit\"></td></tr>
+</table></form></div>";
 
 if ($form_post['password']) {
-        echo "<hr><p>$loc_put_this_in_config_file</p><pre>&lt;password&gt;" . hash_with_salt($form_post['password'], $form_post['salt']) . "&lt;/password&gt;\n&lt;salt&gt;" . $form_post['salt'] . "&lt;/salt&gt;</pre>";
+        echo "<hr><p>$loc_put_this_in_config_file</p><pre>&lt;password&gt;" .
+             hash_with_salt($form_post['password'], $form_post['salt']) .
+             "&lt;/password&gt;\n&lt;salt&gt;" . $form_post['salt'] .
+             "&lt;/salt&gt;</pre>";
 }
 
 echo "</td></tr>";

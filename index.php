@@ -21,8 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 /** @file index.php
-*   @brief Post viewer.
-*/
+ *  @brief Post viewer.
+ */
 
 //! The current file's name.
 $me = "index.php"; // basename($_SERVER['SCRIPT_FILENAME']);
@@ -44,9 +44,10 @@ if ($post) {
 //! Uniquely identifies the blog entry we're caching.
 $cache_id = str_replace("\n", "", var_export($form, true));
 //! Cache file naming is something of a hack.
-$cache_file_name = /* $blog_base_location . */ $blog_cache_dir . md5($cache_id) . ".html";
+$cache_file_name = $blog_cache_dir . md5($cache_id) . ".html";
 
-if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches) && cache_is_current($cache_file_name)) {
+if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches)
+&& cache_is_current($cache_file_name)) {
     $cache_file_in = fopen($cache_file_name, 'r');
     fgets($cache_file_in); // Skip the first line.
     fpassthru($cache_file_in);
@@ -71,7 +72,8 @@ if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches) && cache
         $file = $blog_entries_dir . $post . ".xml";
         if (file_exists($file)) {
             $entry = entry_load($file);
-            echo entry_format($entry, basename($file, ".xml"), $me, $blog_base_location, $blog_files_dir);
+            echo entry_format($entry, basename($file, ".xml"), $me,
+                              $blog_base_location, $blog_files_dir);
         } else {
             echo $loc_entry_not_found;
         }

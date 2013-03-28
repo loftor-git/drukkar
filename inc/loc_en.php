@@ -21,8 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 /** @file loc_en.php
-*   @brief Locale strings file for English
-*/
+ *  @brief Locale strings file for English
+ */
 
 $loc_password = "Password";
 $loc_submit = "Submit";
@@ -42,10 +42,14 @@ $loc_saving_failed = "Saving failed!";
 $loc_upload = "Upload files:";
 $loc_file_uploaded = "File <tt>%s</tt> successfully uploaded as <tt>%s</tt>.";
 $loc_uploading_failed = "Couldn't upload the file <tt>%s</tt>.";
-$loc_uploading_failed_file_exists = "Couldn't upload the file <tt>%s</tt>: file exists.";
+$loc_uploading_failed_file_exists = "Couldn't upload the file <tt>%s</tt>:
+ file exists.";
 $loc_file_not_found = "File not found:";
-$loc_invalid_date = "The date %s is invalid; the previous date %s has been retained.";
-$loc_makepass_warning = "Warning! Do <i>not</i> use this script on a remote server over an unsecure connection. Instead, run it locally to generate your password.";
+$loc_invalid_date = "The date %s is invalid; the previous date %s has been
+ retained.";
+$loc_makepass_warning = "Warning! Do <i>not</i> use this script on a remote
+ server over an unsecure connection. Instead, run it locally to generate
+ your password.";
 $loc_put_this_in_config_file = "Put this in your <tt>config.xml</tt> file:";
 $loc_directories = "Directories:";
 $loc_log_out = "[ Log out ]";

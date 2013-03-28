@@ -21,8 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 /** @file header.php
-*   @brief Blog header file. Opens the HTML document.
-*/
+ *  @brief Blog header file. Opens the HTML document.
+ */
 
 echo <<<ENDHEADER
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -36,7 +36,9 @@ echo <<<ENDHEADER
     </style>
 </head>
 <body>
-<div id="container"><table id="main"><tr><td id="header"><h1 id="title"><a href="$blog_base_location">$blog_title</a></h1>
+<div id="container">
+<table id="main"><tr><td id="header">
+<h1 id="title"><a href="$blog_base_location">$blog_title</a></h1>
 ENDHEADER;
 
 if (strlen($blog_subtitle) > 0) {

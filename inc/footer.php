@@ -21,11 +21,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 /** @file footer.php
-*   @brief Blog footer. Contains what is displayed at the bottom of the page (beneath the blog entries) and closes the HTML document.
-*/
+ *  @brief Blog footer. Contains what is displayed at the bottom of the page
+ *  (underneath the blog entries) and closes the HTML document.
+ */
 
 echo <<<ENDFOOTER
-<tr><td id="footer">Powered by <a href="http://drukkar.sourceforge.net/">Drukkar</a> $version&nbsp;~&nbsp;<a href="rss.php">RSS</a></td></tr></table></div>
+<tr><td id="footer">
+Powered by <a href="http://drukkar.sourceforge.net/">Drukkar</a> $version
+&nbsp;~&nbsp;
+<a href="rss.php">RSS</a>
+</td></tr>
+</table>
+</div>
 </body>
 </html>
 ENDFOOTER
