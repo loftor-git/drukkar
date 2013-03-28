@@ -115,7 +115,7 @@ pre.source {
 	width: 760px;
 }
 
-div.source {
+ol.source {
 	overflow: auto;
 	white-space: pre-wrap;                  /* CSS 3 browsers  */
 	white-space: -moz-pre-wrap !important; /* 1999+ Mozilla  */
@@ -123,17 +123,17 @@ div.source {
 	white-space: -o-pre-wrap;               /* Opera 7+ */
 	word-wrap: break-word;                  /* IE 5.5+ */
 	width: 760px;
-    font-family: mono;
+    font-family: monospace;
 }
 
 .evenline {
     background-color: #f0f0f0;
-    padding-left: 50px;
+    padding-left: 0.5em;
 }
 
 .oddline {
     background-color: #ffffff;
-    padding-left: 50px;
+    padding-left: 0.5em;
 }
 
 .linenumber {

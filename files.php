@@ -108,19 +108,15 @@ function fmtcode() {
         if (p >= 0) {
             var pre = preElements[p];
             var lines = pre.innerHTML.split('\\n');
-            var newEl = document.createElement('div');
-            newEl.className = "source";
+            var newList = document.createElement('ol');
+            newList.className = "source";
             for (line in lines) {
-                newDiv = document.createElement('div');
-                newDiv.className = (line % 2 == 0 ? 'even' : 'odd' ) + 'line';
-                newDiv.innerHTML = lines[line];
-                newSpan = document.createElement('span');
-                newSpan.className = 'linenumber';
-                newSpan.innerHTML = line;
-                newEl.appendChild(newSpan);
-                newEl.appendChild(newDiv);
+                listEl = document.createElement('li');
+                listEl.className = (line % 2 == 0 ? 'even' : 'odd' ) + 'line';
+                listEl.innerHTML = (lines[line] == "" ? "<br>" : lines[line]);
+                newList.appendChild(listEl);
             }
-            pre.parentNode.replaceChild(newEl, pre);
+            pre.parentNode.replaceChild(newList, pre);
         }
     }
 }
@@ -158,7 +154,7 @@ if (isset($_SESSION['is_logged_in'])) {
                         printf($loc_file_renamed, $file_name, $new_name);
                     break;
                 case "view":
-                    echo "$file_name:<br><pre class=\"source\">\n";
+                    echo "<h2>$file_name</h2><pre class=\"source\">\n";
                     echo htmlspecialchars(file_get_contents($directory . $file_name));
                     echo "</pre><hr>\n";
                     break;
@@ -176,8 +172,9 @@ if (isset($_SESSION['is_logged_in'])) {
     echo "<form name=\"form\" action=\"$me" . (htmlspecialchars($form_get['dir']) ? "?dir=" . htmlspecialchars($form_get['dir']) : "") . "\" method=\"post\" enctype=\"multipart/form-data\">";
     
     foreach (glob($directory . "*") as $file) {
+        $file_info = "<br>" . decoct(fileperms($file)) . "&emsp;" . posix_getpwuid(fileowner($file))['name'] . "&emsp;" . posix_getgrgid(filegroup($file))['name'] . "&emsp;" . human_readable_file_size(filesize($file)) . "&emsp;" . date($blog_date_format, filemtime($file));
         $file = basename($file);
-        echo "<p><span class=\"actionbuttons\"><input type=\"button\" onClick=\"javascript:fview('$file');\" value=\"$loc_view\">&nbsp;<input type=\"button\" onClick=\"javascript:frename('$file');\" value=\"$loc_rename\">&nbsp;<input type=\"button\" onClick=\"javascript:fdelete('$file');\" value=\"$loc_delete\"></span> <a href=\"$directory$file\">$file</a></p>";
+        echo "<p><span class=\"actionbuttons\"><input type=\"button\" onClick=\"javascript:fview('$file');\" value=\"$loc_view\">&nbsp;<input type=\"button\" onClick=\"javascript:frename('$file');\" value=\"$loc_rename\">&nbsp;<input type=\"button\" onClick=\"javascript:fdelete('$file');\" value=\"$loc_delete\"></span> <a href=\"$directory$file\">$file</a> " . $file_info . "</p>";
     }
     echo "<hr><p>$loc_upload<br><input type=\"file\" name=\"file1\"><br><input type=\"file\" name=\"file2\"><br><input type=\"file\" name=\"file3\"></p>
     <p>$loc_translit<br><input type=\"radio\" name=\"translit\" value=\"russian\">&nbsp;$loc_russian <input type=\"radio\" name=\"translit\" value=\"ukrainian\" checked>&nbsp;$loc_ukrainian</p>   
