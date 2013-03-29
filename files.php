@@ -46,7 +46,7 @@ include("inc/footer.php");
 // The header. It's mostly HTML with little logic.
 blog_header();
 
-echo '<tr><td id="content">';
+echo "<tr><td id=\"content\">\n";
 
 $form_post = array('password', 'action', 'argument', 'translit', 'file');
 $form_get = array('dir');
@@ -134,6 +134,7 @@ function fmtcode() {
 
 window.addEventListener('load', fmtcode, false);
 </script>
+
 END;
 
 if (isset($_SESSION['is_logged_in'])) {
@@ -144,13 +145,13 @@ if (isset($_SESSION['is_logged_in'])) {
          $_SESSION['created'] = time();
     }
   
-    echo "<p><a id=\"logout\" href=\"$me?logout\">$loc_log_out</a>";    
+    echo "<p><a id=\"logout\" href=\"$me?logout\">$loc_log_out</a>\n";    
     echo "<p>$loc_directories ";
     
     foreach ($dirs as $dir) {
         echo "<a href=\"$me?dir=$dir\">[ $dir ]</a> ";
     }
-    echo "</p><br>";
+    echo "</p><br>\n";
 
     // Process the action that the user selected
     if ($form_post['action']) {
@@ -171,30 +172,30 @@ if (isset($_SESSION['is_logged_in'])) {
                     }
                     break;
                 case "view":
-                    echo "<h2>$file_name</h2><pre class=\"source\">\n";
-                    echo htmlspecialchars(file_get_contents($directory .
-                                                             $file_name));
-                    echo "</pre><hr>\n";
+                    echo "<h2>$file_name</h2><pre class=\"source\">\n",
+                         htmlspecialchars(file_get_contents($directory .
+                                                             $file_name)),
+                         "</pre><hr>\n";
                     break;
             }
         } else {
-            echo "<span class=\"error\">$loc_file_not_found
- $file_name.</span>";
+            echo "<span class=\"error\">$loc_file_not_found ",
+                 "$file_name.</span>";
         }
-        echo "<br>";
+        echo "<br>\n";
     } else {
         // If there's no action we should process the uploaded files
         if (process_uploaded_files($_FILES, $form_post['translit'],
                                    $directory)) {
-            echo "<br>"; // Line break after process_uploaded_files's message.
+            echo "<br>\n"; // Line break after process_uploaded_files's message.
         }
         
     }
     
-    echo "<form name=\"form\" action=\"$me" .
-         (htmlspecialchars($form_get['dir']) ? "?dir=" .
-          htmlspecialchars($form_get['dir']) : "") . "\" method=\"post\"
- enctype=\"multipart/form-data\">";
+    echo "<form name=\"form\" action=\"$me",
+         (htmlspecialchars($form_get['dir']) ?
+          "?dir=" . htmlspecialchars($form_get['dir']) : ""),
+         "\" method=\"post\" enctype=\"multipart/form-data\">\n";
     
     foreach (glob($directory . "*") as $file) {
         $file_stat = stat($file);
@@ -204,36 +205,38 @@ if (isset($_SESSION['is_logged_in'])) {
                      human_readable_file_size($file_stat['size']) . "&emsp;" .
                      date($blog_date_format, $file_stat['mtime']);
         $file = basename($file);
-        echo "<p><span class=\"actionbuttons\"><input type=\"button\"
- onClick=\"javascript:fview('$file');\" value=\"$loc_view\">&nbsp;
-<input type=\"button\" onClick=\"javascript:frename('$file');\"
- value=\"$loc_rename\">&nbsp;<input type=\"button\"
- onClick=\"javascript:fdelete('$file');\" value=\"$loc_delete\"></span>
- <a href=\"$directory$file\">$file</a> " . $file_info . "</p>";
+        echo "<p><span class=\"actionbuttons\"><input type=\"button\" ",
+             "onClick=\"javascript:fview('$file');\" value=\"$loc_view\">",
+             "&nbsp;<input type=\"button\" ",
+             "onClick=\"javascript:frename('$file');\" ",
+             "value=\"$loc_rename\">&nbsp;<input type=\"button\" ",
+             "onClick=\"javascript:fdelete('$file');\" value=\"$loc_delete\">",
+             "</span><a href=\"$directory$file\">$file</a> ", $file_info,
+             "</p>\n";
     }
-    echo "<hr>
-    <p>$loc_upload<br><input type=\"file\" name=\"file1\"><br>
-<input type=\"file\" name=\"file2\"><br><input type=\"file\" name=\"file3\">
-</p>
-    <p>$loc_translit<br>
-<input type=\"radio\" name=\"translit\" value=\"russian\">&nbsp;$loc_russian
- <input type=\"radio\" name=\"translit\" value=\"ukrainian\" checked>
-&nbsp;$loc_ukrainian</p>   
-    <p><input type=\"hidden\" name=\"file\">
-<input type=\"hidden\" name=\"action\">
-<input type=\"hidden\" name=\"argument\">
-<input type=\"submit\" name=\"submitbutton\" value=\"$loc_submit\"></p>
-</form>";
+    echo "<hr>\n<p>$loc_upload<br>\n",
+         "<input type=\"file\" name=\"file1\"><br>\n",
+         "<input type=\"file\" name=\"file2\"><br>\n",
+         "<input type=\"file\" name=\"file3\"></p>\n",
+         "<p>$loc_translit<br>",
+         "<input type=\"radio\" name=\"translit\" value=\"russian\">",
+         "&nbsp;$loc_russian <input type=\"radio\" name=\"translit\" ",
+         "value=\"ukrainian\" checked>&nbsp;$loc_ukrainian</p>\n",
+         "<p><input type=\"hidden\" name=\"file\">",
+         "<input type=\"hidden\" name=\"action\">",
+         "<input type=\"hidden\" name=\"argument\">",
+         "<input type=\"submit\" name=\"submitbutton\" ",
+         "value=\"$loc_submit\"></p>\n</form>";
 } else { // The user isn't logged in.
-    echo "<form name=\"form\" action=\"$me\" method=\"post\"
- enctype=\"multipart/form-data\">
-    <p>$loc_password<br><input type=password name=password
- value=\"${form_post['password']}\"></p>
-    <p><input type=\"submit\" name=\"submitbutton\" value=\"$loc_log_in\">
-</p></form>";
+    echo "<form name=\"form\" action=\"$me\" method=\"post\" ",
+          "enctype=\"multipart/form-data\">\n",
+          "<p>$loc_password<br><input type=password name=password ",
+          "value=\"${form_post['password']}\"></p>\n",
+          "<p><input type=\"submit\" name=\"submitbutton\" ",
+          "value=\"$loc_log_in\"></p>\n</form>";
 }
 
-echo '</td></tr>';
+echo "</td></tr>\n";
 
 // A mostly-HTML footer
 blog_footer();

@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *  @brief Blog header file. Opens the HTML document.
  */
 
-/** @brief Opens the HTML document, output the head and start page layout table.
+/** @brief Opens the HTML document, output <head> and start page layout table.
  *  @param $page_title what to put in <title>
  */
 function blog_header($page_title = "") {
@@ -33,7 +33,7 @@ function blog_header($page_title = "") {
         $page_title = $GLOBALS['blog_title'];
     }
 
-    echo <<<ENDHEADER
+  /*  echo <<<ENDHEADER
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
@@ -46,15 +46,33 @@ function blog_header($page_title = "") {
 </head>
 <body>
 <div id="container">
-<table id="main"><tr><td id="header">
-<h1 id="title"><a href="${GLOBALS['blog_base_location']}">${GLOBALS['blog_title']}</a></h1>
-ENDHEADER;
+<table id="main">
+<tr><td id="header"><h1 id="title"><a href="${GLOBALS['blog_base_location']}">${GLOBALS['blog_title']}</a></h1>
+ENDHEADER; */
+
+    echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" ",
+         "\"http://www.w3.org/TR/html4/strict.dtd\">\n",
+         "<html>\n<head>\n",
+         "<meta http-equiv=\"Content-Type\" content=\"text/html; ",
+         "charset=UTF-8\">\n",
+         "    <link rel=\"shortcut icon\" href=\"favicon.ico\">\n",
+         "    <title>$page_title</title>\n",
+         "    <style type=\"text/css\" media=\"all\">\n",
+         "        @import \"blog.css\";\n",
+         "    </style>\n",
+         "</head>\n",
+         "<body>\n",
+         "<div id=\"container\">\n",
+         "<table id=\"main\">\n",
+         "<tr><td id=\"header\"><h1 id=\"title\"><a href=\"",
+         $GLOBALS['blog_base_location'],
+         "\">${GLOBALS['blog_title']}</a></h1>";
 
     if (strlen($GLOBALS['blog_subtitle']) > 0) {
         echo "<p id=\"subtitle\">${GLOBALS['blog_subtitle']}</p>";
     }
 
-    echo "</td></tr>";
+    echo "</td></tr>\n";
 }
 
 ?>

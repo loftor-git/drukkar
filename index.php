@@ -31,7 +31,7 @@ function page_start($title = "") {
     // Search form
     blog_search_form();
 
-    echo '<tr><td id="content">';
+    echo "<tr><td id=\"content\">\n";
 }
 
 //! The current file's name.
@@ -90,30 +90,53 @@ if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches)
         $entries = array_reverse(glob($blog_entries_dir . "*.xml"));
 
         if ($form['tag'] === '_excluded' || $form['tag'] === '_hidden') {
-            $entries = array(); // Don't allow searching for _hidden or _excluded entries.
+            // Don't allow searching for _hidden or _excluded entries.
+            $entries = array(); 
         } else {
             $entries = array_filter($entries,
-            function ($file) { // This function filters out the entries based on what we're looking to display.
+            function ($file) {
+                    /* This function filters out the entries based on what
+                       we're looking to display. */
                     global $form;
                     global $blog_search_enabled;
                     
                     $entry = entry_load($file);
                     
                     if (entry_check_tag('_hidden', $entry)) {
-                            return false; // _hidden entries can only be viewed with a direct link.
-                    }                
+                            /* _hidden entries can only be viewed with a 
+                               direct link. */
+                            return false;
+                    }          
+                          
+                    // $t indicates whether to display the current entry.
+                    $t = true; 
                     
-                    $t = true; // $t indicates whether to display the current entry.
-                    
-                    if ($form['tag']) { // If we've been given a tag filter out entries without it.
+                    if ($form['tag']) { 
+                        /* If we've been given a tag filter out entries
+                           without it. */
                         $t = $t && entry_check_tag($form['tag'], $entry);
                     }
                     
-                    if ($form['search'] && $blog_search_enabled) { // We look for a string in each entry's text, title, date and file names.
-                        $t = $t && (stripos($entry->title, $form['search']) !== false || stripos($entry->text, $form['search']) !== false || stripos(date($GLOBALS['blog_date_format'], (int) $entry->date), $form['search']) !== false || stripos(join(" ", entry_files($entry)), $form['search']) !== false);
+                    /* We look for a string in each entry's text, title,
+                       date and file names. */
+                    if ($form['search'] && $blog_search_enabled) { 
+                        $t = $t &&
+                             (stripos($entry->title, $form['search'])
+                             !== false ||
+                             stripos($entry->text, $form['search'])
+                             !== false ||
+                             stripos(date($GLOBALS['blog_date_format'],
+                                          (int) $entry->date),
+                                     $form['search'])
+                             !== false ||
+                             stripos(join(" ", entry_files($entry)),
+                                     $form['search'])
+                             !== false);
                     }
                     
-                    if (!$form['tag'] && !$form['search']) { // Don't show excluded entries if not searching or viewing posts by tag
+                    /* Don't show excluded entries if not searching or viewing
+                       posts by tag */
+                    if (!$form['tag'] && !$form['search']) { 
                         $t = $t && !entry_check_tag('_excluded', $entry);
                     }
 
@@ -123,17 +146,26 @@ if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches)
         }
         
         if ($form['tag'] || $form['search']) {
-            $blog_entries_per_page = $blog_entries_per_page_for_tags_and_search;
+            $blog_entries_per_page =
+            $blog_entries_per_page_for_tags_and_search;
         }
 
         if (count($entries) > 0) {
             // Output one pagefull of entries
-            foreach (array_slice($entries, $form['page'] * $blog_entries_per_page, $blog_entries_per_page) as $file) {
+            foreach (array_slice($entries,
+                                  $form['page'] * $blog_entries_per_page,
+                                  $blog_entries_per_page) as $file) {
                 $entry = entry_load($file);
-                echo entry_format($entry, basename($file, ".xml"), $me, $blog_base_location, $blog_files_dir) . "<hr>\n";
+                echo entry_format($entry,
+                                   basename($file, ".xml"),
+                                   $me,
+                                   $blog_base_location,
+                                   $blog_files_dir) . "<hr>\n";
             }
             
-            $query_string = array(); // Used below when generating links to different pages of search or tag lookup results.
+            /* Used below when generating links to different pages of search or
+               tag lookup results. */
+            $query_string = array(); 
             
             if ($form['tag']) {
                 $query_string[] = "tag=" . $form['tag'];
@@ -144,20 +176,26 @@ if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches)
             }
             
             // Show page navigation links if needed
-            if (($form['page'] + 1) * $blog_entries_per_page < count($entries)) {
+            if (($form['page'] + 1) * $blog_entries_per_page <
+count($entries)) {
                 $query_string[] = "page=" . ($form['page'] + 1);
-                echo "<a id=\"prevpagelink\" href=\"$me?" . implode("&", $query_string) . "\">$loc_prev_page</a>";
+                echo "<a id=\"prevpagelink\" href=\"$me?",
+                     implode("&", $query_string),
+                     "\">$loc_prev_page</a>";
             }
-            if ($form['page'] > 0) { // If there are more entries to display
+            
+            // If there are more entries to display
+            if ($form['page'] > 0) { 
                 $query_string[] = "page=" . ($form['page'] - 1);
-                echo "<a id=\"nextpagelink\" href=\"$me?" . implode("&", $query_string) . "\">$loc_next_page</a>";
+                echo "<a id=\"nextpagelink\" href=\"$me?",
+                implode("&", $query_string), "\">$loc_next_page</a>";
             }
         } else {
             echo $loc_no_matches;
         }
     }
 
-    echo "</td></tr>";
+    echo "</td></tr>\n";
 
     // A mostly-HTML footer
     blog_footer();

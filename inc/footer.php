@@ -28,18 +28,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 /** @brief Closes the layout table and the HTML document.
  */
 function blog_footer() {
-    echo <<<ENDFOOTER
-<tr><td id="footer">
-Powered by <a href="http://drukkar.sourceforge.net/">Drukkar</a> ${GLOBALS['version']}
-&nbsp;~&nbsp;
-<a href="rss.php">RSS</a>
-</td></tr>
-</table>
-</div>
-</body>
-</html>
-ENDFOOTER;
-
+    echo "<tr><td id=\"footer\">Powered by <a ",
+         "href=\"http://drukkar.sourceforge.net/\">Drukkar</a> ",
+         $GLOBALS['version'], "&nbsp;~&nbsp;<a href=\"rss.php\">RSS</a>",
+         "</td></tr>\n", "</table>\n</div>\n</body>\n</html>";
 }
 
 ?>

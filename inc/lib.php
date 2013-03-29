@@ -107,19 +107,21 @@ function entry_format($entry, $entry_id, $link_target = "index.php",
     }
     $tags = substr($tags, 0, -2);
     
-    return "<h2 class=\"entrytitle\"><a class=\"titlelink\" href=\"
-$link_target?post=" . htmlspecialchars($entry_id) .
-    ($GLOBALS['blog_entry_links_with_titles'] ? "-" .
-    sanitize_file_name(strip_tags($entry->title)) : "") . "\">" .
-    ((string) $entry->format === "html" ? $entry->title :
-    htmlspecialchars($entry->title)) . "</a></h2><div class=\"text\">" . 
-    ((string) $entry->format === "html" ? $entry->text :
-    ((string) $entry->format === "markdown" ? Markdown($entry->text) :
-    htmlspecialchars($entry->text))) . 
-    "</div><p class=\"files\">$files</p>" . ($GLOBALS['blog_show_dates'] ?
-    "<p class=\"date\">" . date($GLOBALS['blog_date_format'],
-    (int) $entry->date) . "</p>" : "") . (strlen($tags) != 0 ?
-    "<p class=\"tags\">Tags: $tags</p>" : "");
+    return "<h2 class=\"entrytitle\"><a class=\"titlelink\" href=\"" .
+            "$link_target?post=" . htmlspecialchars($entry_id) .
+             ($GLOBALS['blog_entry_links_with_titles'] ? "-" .
+              sanitize_file_name(strip_tags($entry->title)) : "") . "\">" .
+            ((string) $entry->format === "html" ? $entry->title :
+            htmlspecialchars($entry->title)) .
+            "</a></h2>\n<div class=\"text\">" . 
+            ((string) $entry->format === "html" ? $entry->text :
+            ((string) $entry->format === "markdown" ?
+            Markdown($entry->text) : htmlspecialchars($entry->text))) . 
+            "</div>\n<p class=\"files\">$files</p>" .
+            ($GLOBALS['blog_show_dates'] ?
+            "<p class=\"date\">" . date($GLOBALS['blog_date_format'],
+            (int) $entry->date) . "</p>" : "") . (strlen($tags) != 0 ?
+            "<p class=\"tags\">Tags: $tags</p>" : "");
 }
 
 /** @brief Sanitize a file name replacing special symbols with dashes
