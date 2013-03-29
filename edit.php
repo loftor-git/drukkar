@@ -36,11 +36,14 @@ if (!isset($_SESSION['initiated'])) { // This helps prevent session fixation att
 include("inc/config.php");
 include("inc/lib.php");
 
+include("inc/header.php");
+include("inc/footer.php");
+
 //! How this file is named.
 $me = "edit.php";
 
-// The header. It's mostly HTML with little logic.
-include("inc/header.php");
+// Blog header. It's mostly HTML with little logic.
+blog_header();
 
 echo '<tr><td id="content">';
 
@@ -160,6 +163,6 @@ if (isset($_SESSION['is_logged_in'])) {
 echo '</td></tr>';
 
 // A mostly-HTML footer
-include("inc/footer.php")
+blog_footer();
 
 ?>

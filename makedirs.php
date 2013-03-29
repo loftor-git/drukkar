@@ -35,8 +35,14 @@ header('Content-type: text/html; charset=utf-8');
 include("inc/config.php");
 include("inc/lib.php");
 
-// A mostly-HTML header
 include("inc/header.php");
+include("inc/footer.php");
+
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
+// The header. It's mostly HTML with little logic.
+blog_header();
 
 $form_post = array("password", "salt");
 
@@ -63,7 +69,7 @@ directory and made sure that everything works don't forget to remove
 
 echo "</td></tr>";
 
-include("inc/footer.php");
+blog_footer();
 
 
 ?>

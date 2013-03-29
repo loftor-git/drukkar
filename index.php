@@ -24,12 +24,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *  @brief Post viewer.
  */
 
+function page_start($title = "") {
+    // The header. It's mostly HTML with little logic.
+    blog_header($title);
+
+    // Search form
+    blog_search_form();
+
+    echo '<tr><td id="content">';
+}
+
 //! The current file's name.
 $me = "index.php"; // basename($_SERVER['SCRIPT_FILENAME']);
 header('Content-type: text/html; charset=utf-8');
 
 include("inc/lib.php");
 include("inc/config.php");
+
+include("inc/header.php");
+include("inc/search.php");
+include("inc/footer.php");
 
 $form = array('page', 'post', 'tag', 'search');
 process_form($form, $_GET);
@@ -58,56 +72,52 @@ if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches)
         ob_start();
     }
 
-    // The header. It's mostly HTML with little logic.
-    include("inc/header.php");
-
-    // Search form
-    include("inc/search.php");
-
-    echo '<tr><td id="content">';
-
-    $entries = array_reverse(glob($blog_entries_dir . "*.xml"));
-
-    if ($post) {    
+    if ($post) {
         $file = $blog_entries_dir . $post . ".xml";
         if (file_exists($file)) {
             $entry = entry_load($file);
+            page_start(strip_tags($entry->title) . " | " . $blog_title);
             echo entry_format($entry, basename($file, ".xml"), $me,
                               $blog_base_location, $blog_files_dir);
         } else {
+            page_start();
             echo $loc_entry_not_found;
         }
      }
      else {
-            if ($form['tag'] === '_excluded' || $form['tag'] === '_hidden') {
-                $entries = array(); // Don't allow searching for _hidden or _excluded entries.
-            } else {
-                $entries = array_filter($entries,
-                function ($file) { // This function filters out the entries based on what we're looking to display.
-                        global $form;
-                        global $blog_search_enabled;
-                        
-                        $entry = entry_load($file);
-                        
-                        if (entry_check_tag('_hidden', $entry)) {
-                                return false; // _hidden entries can only be viewed with a direct link.
-                        }                
-                        
-                        $t = true; // $t indicates whether to display the current entry.
-                        
-                        if ($form['tag']) { // If we've been given a tag filter out entries without it.
-                            $t = $t && entry_check_tag($form['tag'], $entry);
-                        }
-                        
-                        if ($form['search'] && $blog_search_enabled) { // We look for a string in each entry's text, title, date and file names.
-                            $t = $t && (stripos($entry->title, $form['search']) !== false || stripos($entry->text, $form['search']) !== false || stripos(date($GLOBALS['blog_date_format'], (int) $entry->date), $form['search']) !== false || stripos(join(" ", entry_files($entry)), $form['search']) !== false);
-                        }
-                        
-                        if (!$form['tag'] && !$form['search']) { // Don't show excluded entries if not searching or viewing posts by tag
-                            $t = $t && !entry_check_tag('_excluded', $entry);
-                        }
+        page_start();
 
-                        return $t;
+        $entries = array_reverse(glob($blog_entries_dir . "*.xml"));
+
+        if ($form['tag'] === '_excluded' || $form['tag'] === '_hidden') {
+            $entries = array(); // Don't allow searching for _hidden or _excluded entries.
+        } else {
+            $entries = array_filter($entries,
+            function ($file) { // This function filters out the entries based on what we're looking to display.
+                    global $form;
+                    global $blog_search_enabled;
+                    
+                    $entry = entry_load($file);
+                    
+                    if (entry_check_tag('_hidden', $entry)) {
+                            return false; // _hidden entries can only be viewed with a direct link.
+                    }                
+                    
+                    $t = true; // $t indicates whether to display the current entry.
+                    
+                    if ($form['tag']) { // If we've been given a tag filter out entries without it.
+                        $t = $t && entry_check_tag($form['tag'], $entry);
+                    }
+                    
+                    if ($form['search'] && $blog_search_enabled) { // We look for a string in each entry's text, title, date and file names.
+                        $t = $t && (stripos($entry->title, $form['search']) !== false || stripos($entry->text, $form['search']) !== false || stripos(date($GLOBALS['blog_date_format'], (int) $entry->date), $form['search']) !== false || stripos(join(" ", entry_files($entry)), $form['search']) !== false);
+                    }
+                    
+                    if (!$form['tag'] && !$form['search']) { // Don't show excluded entries if not searching or viewing posts by tag
+                        $t = $t && !entry_check_tag('_excluded', $entry);
+                    }
+
+                    return $t;
                 }
             );
         }
@@ -150,8 +160,8 @@ if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches)
     echo "</td></tr>";
 
     // A mostly-HTML footer
-    include("inc/footer.php");
-    
+    blog_footer();
+
     if ($blog_caching_enabled) {
         $cache_file_out = fopen($cache_file_name, 'w');
         fwrite($cache_file_out, "<!-- $cache_id -->\n");

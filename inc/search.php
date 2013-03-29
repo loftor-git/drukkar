@@ -27,17 +27,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *  (like Site Search) or a menu to be displayed above the enties in your blog.
  */
 
-if ($blog_search_enabled) {
-    echo '<tr><td id="search"><form action="index.php"><div id="searchform">
-<input type="text" name="search" size=50><input type="submit" value="' .
-          $loc_search . '"></div></form></td></tr>';
-} else {
-    /* Custom search code goes here, e.g., Google website search. This is also
-       a good place to put a menu with links to your _excluded pages (e.g.,
-       "About me" and "Contacts"). */
-    echo <<<CUSTOMSEARCH
+/** @brief Outputs the search bar and custom search/menu, if any.
+ */
+function blog_search_form() {
+    if ($GLOBALS['blog_search_enabled']) {
+        echo '<tr><td id="search"><form action="index.php"><div id="searchform">
+    <input type="text" name="search" size=50><input type="submit" value="' .
+              $GLOBALS['loc_search'] . '"></div></form></td></tr>';
+    } else {
+        /* Custom search code goes here, e.g., Google website search. This is also
+           a good place to put a menu with links to your _excluded pages (e.g.,
+           "About me" and "Contacts"). */
+        echo <<<CUSTOMSEARCH
 
 CUSTOMSEARCH;
+    }
 }
 
 ?>

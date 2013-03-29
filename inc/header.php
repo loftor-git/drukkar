@@ -24,13 +24,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *  @brief Blog header file. Opens the HTML document.
  */
 
-echo <<<ENDHEADER
+/** @brief Opens the HTML document, output the head and start page layout table.
+ *  @param $page_title what to put in <title>
+ */
+function blog_header($page_title = "") {
+
+    if (!isset($page_title)) {
+        $page_title = $GLOBALS['blog_title'];
+    }
+
+    echo <<<ENDHEADER
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="shortcut icon" href="favicon.ico">
-    <title>$blog_title</title>
+    <title>$page_title</title>
     <style type="text/css" media="all">
         @import "blog.css";
     </style>
@@ -38,13 +47,14 @@ echo <<<ENDHEADER
 <body>
 <div id="container">
 <table id="main"><tr><td id="header">
-<h1 id="title"><a href="$blog_base_location">$blog_title</a></h1>
+<h1 id="title"><a href="${GLOBALS['blog_base_location']}">${GLOBALS['blog_title']}</a></h1>
 ENDHEADER;
 
-if (strlen($blog_subtitle) > 0) {
-    echo "<p id=\"subtitle\">$blog_subtitle</p>";
-}
+    if (strlen($GLOBALS['blog_subtitle']) > 0) {
+        echo "<p id=\"subtitle\">${GLOBALS['blog_subtitle']}</p>";
+    }
 
-echo "</td></tr>";
+    echo "</td></tr>";
+}
 
 ?>
