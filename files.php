@@ -69,7 +69,6 @@ else
 
 if ((hash_with_salt($form_post['password'], $blog_salt) === $blog_password) 
 && !isset($_SESSION['is_logged_in'])) {
-    session_regenerate_id(true);
     $_SESSION['is_logged_in'] = true;
     $_SESSION['created'] = time();
 }
