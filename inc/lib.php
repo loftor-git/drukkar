@@ -406,4 +406,42 @@ function human_readable_file_size($size, $decimals = 2) {
                 $units[$factor];
     }
 }
+
+/** @brief Try to get the *nix user name by UID.
+ *  @param int $uid
+ *  @return string
+ */
+function user_name_from_uid_safe($uid) {
+    if (function_exists('posix_getpwuid')) {
+        $u = posix_getpwuid($uid);
+        return $u['name'];
+    }  elseif (is_readable('/etc/passwd')) {
+        exec(sprintf('grep :%d: /etc/passwd | cut -d: -f1', (int) $uid),
+             $output, $retcode);
+        if ($retcode == 0) {
+            return trim($output[0]);
+        }
+    }
+    
+    return $uid;
+}
+
+/** @brief Try to get the *nix group name by GID.
+ *  @param int $gid
+ *  @return string
+ */
+function group_name_from_gid_safe($gid) {
+    if (function_exists('posix_getgrgid')) {
+        $g = posix_getgrgid($gid);
+        return $g['name'];
+    }  elseif (is_readable('/etc/group')) {
+        exec(sprintf('grep :%d: /etc/group | cut -d: -f1', (int) $gid),
+             $output, $retcode);
+        if ($retcode == 0) {
+            return trim($output[0]);
+        }
+    }
+    
+    return $gid;
+}
 ?>

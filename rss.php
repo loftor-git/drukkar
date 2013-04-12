@@ -77,17 +77,17 @@ ENDHEADER;
               ($GLOBALS['blog_entry_links_with_titles'] ? "-" .
                sanitize_file_name(strip_tags($entry->title)) : "");
 
-	    echo "<item>\n<title><![CDATA[" .
+	    echo "<item>\n<title><![CDATA[",
 	         ((string) $entry->format === "html" ? $entry->title :
-	          htmlspecialchars($entry->title)) . "]]></title>\n";
+	          htmlspecialchars($entry->title)), "]]></title>\n";
 	    echo "<link>$id</link>\n";
 	    echo "<guid>$id</guid>\n";	
-	    echo "<description><![CDATA[" .
+	    echo "<description><![CDATA[",
 	         ((string) $entry->format === "html" ? $entry->text :
 	         ((string) $entry->format === "markdown" ?
-	         Markdown($entry->text) : htmlspecialchars($entry->text))) .
+	         Markdown($entry->text) : htmlspecialchars($entry->text))),
 	         "]]></description>\n";
-	    echo "<pubDate>" . date($rfc822dt, (int) $entry->date) .
+	    echo "<pubDate>", date($rfc822dt, (int) $entry->date),
 	         "</pubDate>\n";
 	    echo "</item>\n\n";
     }

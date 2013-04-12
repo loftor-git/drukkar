@@ -50,21 +50,24 @@ process_form($form_post, $_POST);
 
 echo "<tr><td id=\"content\">";
 
-echo "<h1>Creating directories...</h1><p>";
+echo "<h1>$loc_creating_dirs</h1>\n<p>";
 
 $dirs = array($blog_files_dir, $blog_entries_dir, $blog_cache_dir);
 
 $t = true;
 
 foreach ($dirs as $dir) {
-    echo "<br>Creating <tt>$dir</tt>...<br>";
-    $t &= mkdir($dir, 0755);
+    printf("<br>$loc_creating_dir ", $dir);
+    $mkdir_success = mkdir($dir, 0755);
+    if (!$mkdir_success) {
+        echo "<span class=\"error\">$loc_creating_dir_failed</span>";
+    }
+    echo "<br>\n";
+    $t &= $mkdir_success;
 }
 
 if ($t) {
-    echo "Success! Once you've placed a correct <tt>.htaccess</tt> in each
-directory and made sure that everything works don't forget to remove
-<tt>$me</tt> from your server.";
+    printf($loc_creating_dirs_success, $me);
 }
 
 echo "</td></tr>";

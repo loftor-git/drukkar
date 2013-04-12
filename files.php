@@ -199,9 +199,10 @@ if (isset($_SESSION['is_logged_in'])) {
     
     foreach (glob($directory . "*") as $file) {
         $file_stat = stat($file);
+        $user_and_group = 
         $file_info = "<br>" . decoct($file_stat['mode']) . "&emsp;" .
-                     posix_getpwuid($file_stat['uid'])['name'] . "&emsp;" .
-                     posix_getgrgid($file_stat['gid'])['name'] . "&emsp;" .
+                     user_name_from_uid_safe($file_stat['uid']) . "&emsp;" .
+                     group_name_from_gid_safe($file_stat['gid']) . "&emsp;" .
                      human_readable_file_size($file_stat['size']) . "&emsp;" .
                      date($blog_date_format, $file_stat['mtime']);
         $file = basename($file);

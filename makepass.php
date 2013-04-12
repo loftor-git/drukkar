@@ -56,9 +56,9 @@ echo "<tr><td id=\"content\">
 </table></form></div>";
 
 if ($form_post['password']) {
-        echo "<hr><p>$loc_put_this_in_config_file</p><pre>&lt;password&gt;" .
-             hash_with_salt($form_post['password'], $form_post['salt']) .
-             "&lt;/password&gt;\n&lt;salt&gt;" . $form_post['salt'] .
+        echo "<hr><p>$loc_put_this_in_config_file</p><pre>&lt;password&gt;",
+             hash_with_salt($form_post['password'], $form_post['salt']),
+             "&lt;/password&gt;\n&lt;salt&gt;", $form_post['salt'],
              "&lt;/salt&gt;</pre>";
 }
 

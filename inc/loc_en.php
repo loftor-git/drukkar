@@ -42,14 +42,14 @@ $loc_saving_failed = "Saving failed!";
 $loc_upload = "Upload files:";
 $loc_file_uploaded = "File <tt>%s</tt> successfully uploaded as <tt>%s</tt>.";
 $loc_uploading_failed = "Couldn't upload the file <tt>%s</tt>.";
-$loc_uploading_failed_file_exists = "Couldn't upload the file <tt>%s</tt>:
- file exists.";
+$loc_uploading_failed_file_exists = "Couldn't upload the file <tt>%s</tt>: " .
+                                    "file exists.";
 $loc_file_not_found = "File not found:";
-$loc_invalid_date = "The date %s is invalid; the previous date %s has been
- retained.";
-$loc_makepass_warning = "Warning! Do <i>not</i> use this script on a remote
- server over an unsecure connection. Instead, run it locally to generate
- your password.";
+$loc_invalid_date = "The date %s is invalid; the previous date %s has been " .
+                    "retained.";
+$loc_makepass_warning = "Warning! Do <i>not</i> use this script on a remote" .
+                        "server over an unsecure connection. Instead, run " .
+                        "it locally to generate your password.";
 $loc_put_this_in_config_file = "Put this in your <tt>config.xml</tt> file:";
 $loc_directories = "Directories:";
 $loc_log_out = "[ Log out ]";
@@ -80,5 +80,12 @@ $loc_prev_page = "Previous page";
 $loc_translit = "Transliterate Cyrillic file names from";
 $loc_ukrainian = "Ukrainian";
 $loc_russian = "Russian";
+$loc_creating_dirs = "Creating directories...";
+$loc_creating_dirs_success = "Success! Once you've placed a correct " .
+                             "<tt>.htaccess</tt> in each directory and made " .
+                             "sure that everything works don't forget to " .
+                             "remove <tt>%s</tt> from your server.";
+$loc_creating_dir = "Creating <tt>%s</tt>...";
+$loc_creating_dir_failed = "failed!";
 
 ?>
