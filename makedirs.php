@@ -48,7 +48,7 @@ $form_post = array("password", "salt");
 
 process_form($form_post, $_POST);
 
-echo "<tr><td id=\"content\">";
+echo "<div id=\"content\">";
 
 echo "<h1>$loc_creating_dirs</h1>\n<p>";
 
@@ -70,7 +70,7 @@ if ($t) {
     printf($loc_creating_dirs_success, $me);
 }
 
-echo "</td></tr>";
+echo "</div><!-- #content -->\n";
 
 blog_footer();
 

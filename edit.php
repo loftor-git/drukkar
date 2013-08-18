@@ -46,7 +46,7 @@ $me = "edit.php";
 // Blog header. It's mostly HTML with little logic.
 blog_header();
 
-echo "<tr><td id=\"content\">\n";
+echo "<div id=\"content\">\n";
 
 $form_post = array('password', 'title', 'date', 'date_backup', 'tags',
                     'format', 'files', 'translit', 'submit', 'text');
@@ -216,7 +216,7 @@ ENDAUTHFORM;
 
 }
 
-echo "</td></tr>\n";
+echo "</div><!-- #content -->\n";
 
 // A mostly-HTML footer
 blog_footer();

@@ -11,6 +11,12 @@ div#container {
     width: 800px;
 }
 
+div.blogentry {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #999999;
+}
+
 div.text {
  /* padding-left: 20px; 
     padding-right: 20px; */
@@ -23,7 +29,7 @@ li {
     text-indent: 0em;   
 }
 
-td#header {
+div#header {
     width: 800px;
     border: 1px solid #999999;
     background-color: #ffffff;
@@ -66,7 +72,7 @@ p#subtitle {
     padding: 5px;
 }
 
-td#search {
+div#search {
     width: 800px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -85,7 +91,7 @@ div#searchform {
     margin-right:auto;       
 }
 
-td#content {
+div#content {
     width: 800px;
     border: 1px solid #999999;
     background-color: #ffffff;
@@ -93,35 +99,30 @@ td#content {
     line-height: 150%;    
 }
 
-td#footer {
+div#footer {
     text-align: center;
     padding-top: 5px;
     font-size: 75%;
 }
 
-table#main {
-/*  background-color: #ffffff; 
-    border: 1px solid #999999; */
-}
-
 pre.source {
-	overflow: auto;
-	white-space: pre-wrap;                  /* CSS 3 browsers  */
-	white-space: -moz-pre-wrap !important; /* 1999+ Mozilla  */
-	white-space: -pre-wrap;                 /* Opera 4-6 */
-	white-space: -o-pre-wrap;               /* Opera 7+ */
-	word-wrap: break-word;                  /* IE 5.5+ */
-	width: 760px;
+    overflow: auto;
+    white-space: pre-wrap;                  /* CSS 3 browsers  */
+    white-space: -moz-pre-wrap !important; /* 1999+ Mozilla  */
+    white-space: -pre-wrap;                 /* Opera 4-6 */
+    white-space: -o-pre-wrap;               /* Opera 7+ */
+    word-wrap: break-word;                  /* IE 5.5+ */
+    width: 760px;
 }
 
 ol.source {
-	overflow: auto;
-	white-space: pre-wrap;                  /* CSS 3 browsers  */
-	white-space: -moz-pre-wrap !important; /* 1999+ Mozilla  */
-	white-space: -pre-wrap;                 /* Opera 4-6 */
-	white-space: -o-pre-wrap;               /* Opera 7+ */
-	word-wrap: break-word;                  /* IE 5.5+ */
-	width: 760px;
+    overflow: auto;
+    white-space: pre-wrap;                  /* CSS 3 browsers  */
+    white-space: -moz-pre-wrap !important; /* 1999+ Mozilla  */
+    white-space: -pre-wrap;                 /* Opera 4-6 */
+    white-space: -o-pre-wrap;               /* Opera 7+ */
+    word-wrap: break-word;                  /* IE 5.5+ */
+    width: 760px;
     font-family: monospace;
 }
 
@@ -141,7 +142,7 @@ ol.source {
     color: #333333;
 }
 
-td#footer {
+div#footer {
     text-align: center;
     padding-top: 5px;
     font-size: 75%;

@@ -48,7 +48,7 @@ $loc_file_not_found = "File not found:";
 $loc_invalid_date = "The date %s is invalid; the previous date %s has been " .
                     "retained.";
 $loc_makepass_warning = "Warning! Do <i>not</i> use this script on a remote" .
-                        "server over an unsecure connection. Instead, run " .
+                        " server over an unsecure connection. Instead, run " .
                         "it locally to generate your password.";
 $loc_put_this_in_config_file = "Put this in your <tt>config.xml</tt> file:";
 $loc_directories = "Directories:";

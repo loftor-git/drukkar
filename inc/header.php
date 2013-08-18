@@ -33,23 +33,6 @@ function blog_header($page_title = "") {
         $page_title = $GLOBALS['blog_title'];
     }
 
-  /*  echo <<<ENDHEADER
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="shortcut icon" href="favicon.ico">
-    <title>$page_title</title>
-    <style type="text/css" media="all">
-        @import "blog.css";
-    </style>
-</head>
-<body>
-<div id="container">
-<table id="main">
-<tr><td id="header"><h1 id="title"><a href="${GLOBALS['blog_base_location']}">${GLOBALS['blog_title']}</a></h1>
-ENDHEADER; */
-
     echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" ",
          "\"http://www.w3.org/TR/html4/strict.dtd\">\n",
          "<html>\n<head>\n",
@@ -63,8 +46,7 @@ ENDHEADER; */
          "</head>\n",
          "<body>\n",
          "<div id=\"container\">\n",
-         "<table id=\"main\">\n",
-         "<tr><td id=\"header\"><h1 id=\"title\"><a href=\"",
+         "<div id=\"header\"><h1 id=\"title\"><a href=\"",
          $GLOBALS['blog_base_location'],
          "\">${GLOBALS['blog_title']}</a></h1>";
 
@@ -72,7 +54,7 @@ ENDHEADER; */
         echo "<p id=\"subtitle\">${GLOBALS['blog_subtitle']}</p>";
     }
 
-    echo "</td></tr>\n";
+    echo "</div><!-- #header -->\n";
 }
 
 ?>

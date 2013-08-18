@@ -44,7 +44,7 @@ $form_post = array("password", "salt");
 
 process_form($form_post, $_POST);
 
-echo "<tr><td id=\"content\">
+echo "<div id=\"content\">
 <h2>$loc_makepass_warning</h2>
 <div><form action=\"${blog_base_location}$me\" method=\"POST\">
 <table>
@@ -62,7 +62,7 @@ if ($form_post['password']) {
              "&lt;/salt&gt;</pre>";
 }
 
-echo "</td></tr>";
+echo "</div><!-- #content -->\n";
 
 blog_footer();
 

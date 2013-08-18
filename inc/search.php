@@ -31,10 +31,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 function blog_search_form() {
     if ($GLOBALS['blog_search_enabled']) {
-        echo '<tr><td id="search"><form action="index.php">',
+        echo '<div id="search"><form action="index.php">',
              '<div id="searchform"><input type="text" name="search" ',
-             'size=50><input type="submit" value="',
-              $GLOBALS['loc_search'], "\"></div></form></td></tr>\n";
+             'size=50>&nbsp;<input type="submit" value="',
+              $GLOBALS['loc_search'], "\"></div><!-- #searchform -->",
+              "</form></div><!-- #search -->\n";
     } else {
         /* Custom search code goes here, e.g., Google website search. This is 
            also a good place to put a menu with links to your _excluded pages

@@ -46,7 +46,7 @@ include("inc/footer.php");
 // The header. It's mostly HTML with little logic.
 blog_header();
 
-echo "<tr><td id=\"content\">\n";
+echo "<div id=\"content\">\n";
 
 $form_post = array('password', 'action', 'argument', 'translit', 'file');
 $form_get = array('dir');
@@ -236,7 +236,7 @@ if (isset($_SESSION['is_logged_in'])) {
           "value=\"$loc_log_in\"></p>\n</form>";
 }
 
-echo "</td></tr>\n";
+echo "</div><!-- #content -->\n";
 
 // A mostly-HTML footer
 blog_footer();

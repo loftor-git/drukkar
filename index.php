@@ -31,7 +31,7 @@ function page_start($title = "") {
     // Search form
     blog_search_form();
 
-    echo "<tr><td id=\"content\">\n";
+    echo "<div id=\"content\">\n";
 }
 
 //! The current file's name.
@@ -160,7 +160,7 @@ if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches)
                                    basename($file, ".xml"),
                                    $me,
                                    $blog_base_location,
-                                   $blog_files_dir) . "<hr>\n";
+                                   $blog_files_dir) . "\n";
             }
             
             /* Used below when generating links to different pages of search or
@@ -195,7 +195,7 @@ count($entries)) {
         }
     }
 
-    echo "</td></tr>\n";
+    echo "</div><!-- #content -->\n";
 
     // A mostly-HTML footer
     blog_footer();
