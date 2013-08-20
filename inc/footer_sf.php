@@ -1,7 +1,7 @@
 <?php
 
 function blog_footer() {
-    echo "<tr><td id=\"footer\">Powered by <a ",
+    echo "<div id=\"footer\">Powered by <a ",
          "href=\"http://drukkar.sourceforge.net/\">Drukkar</a> ",
          $GLOBALS['version'], "&nbsp;~&nbsp;<a href=\"rss.php\">RSS</a>",
          "<br><div style=\"margin-top: 0.75em;margin-right: -5px;\">",
@@ -12,8 +12,14 @@ function blog_footer() {
          "href=\"http://validator.w3.org/check?uri=referer\">" ,
          "<img src=\"http://www.w3.org/Icons/valid-html401\" " ,
          "alt=\"Valid HTML 4.01 Strict\" height=\"31\" width=\"88\"></a>",
+         "&nbsp;&nbsp;&nbsp;",
+         "<a href=\"http://jigsaw.w3.org/css-validator/check/referer\">",
+         "<img style=\"border:0;width:88px;height:31px\" ",
+         "src=\"http://jigsaw.w3.org/css-validator/images/vcss\"",
+         "alt=\"Valid CSS!\"></a>",
          "</div>",
-         "</td></tr>\n", "</table>\n</div>\n</body>\n</html>";
+         "</div><!-- #footer -->\n",
+         "</div><!-- #container -->\n</body>\n</html>";
 }
 
 ?>

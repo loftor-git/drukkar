@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
 //! The current version of Drukkar version
-$version = "1.11";
+$version = "1.12";
 
 $blog_settings = simplexml_load_file("config.xml");
 #var_dump($blog_settings);

@@ -52,7 +52,7 @@ $loc_makepass_warning = "Warning! Do <i>not</i> use this script on a remote" .
                         "it locally to generate your password.";
 $loc_put_this_in_config_file = "Put this in your <tt>config.xml</tt> file:";
 $loc_directories = "Directories:";
-$loc_log_out = "[ Log out ]";
+$loc_log_out = "Log out";
 $loc_log_in = "Log in";
 $loc_session_expired = "Your session has expired.";
 $loc_save = "Save";

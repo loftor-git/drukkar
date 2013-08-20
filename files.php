@@ -144,11 +144,12 @@ if (isset($_SESSION['is_logged_in'])) {
          $_SESSION['created'] = time();
     }
   
-    echo "<p><a id=\"logout\" href=\"$me?logout\">$loc_log_out</a>\n";    
+    echo "<p><a id=\"logout\" class=\"button-link\" href=\"$me?logout\">",
+         "$loc_log_out</a>\n";    
     echo "<p>$loc_directories ";
     
     foreach ($dirs as $dir) {
-        echo "<a href=\"$me?dir=$dir\">[ $dir ]</a> ";
+        echo "<a class=\"button-link\" href=\"$me?dir=$dir\">$dir</a> ";
     }
     echo "</p><br>\n";
 
@@ -205,11 +206,12 @@ if (isset($_SESSION['is_logged_in'])) {
                      human_readable_file_size($file_stat['size']) . "&emsp;" .
                      date($blog_date_format, $file_stat['mtime']);
         $file = basename($file);
-        echo "<p><span class=\"actionbuttons\"><input type=\"button\" ",
+        echo "<p><span class=\"actionbuttons\"><input type=\"button\"",
              "onClick=\"javascript:fview('$file');\" value=\"$loc_view\">",
              "&nbsp;<input type=\"button\" ",
              "onClick=\"javascript:frename('$file');\" ",
-             "value=\"$loc_rename\">&nbsp;<input type=\"button\" ",
+             "value=\"$loc_rename\">&nbsp;<input ",
+             "type=\"button\" ",
              "onClick=\"javascript:fdelete('$file');\" value=\"$loc_delete\">",
              "</span><a href=\"$directory$file\">$file</a> ", $file_info,
              "</p>\n";
@@ -230,8 +232,8 @@ if (isset($_SESSION['is_logged_in'])) {
 } else { // The user isn't logged in.
     echo "<form name=\"form\" action=\"$me\" method=\"post\" ",
           "enctype=\"multipart/form-data\">\n",
-          "<p>$loc_password<br><input type=password name=password ",
-          "value=\"${form_post['password']}\"></p>\n",
+          "<p>$loc_password<br><input type=\"password\" ",
+          "name=\"password\" value=\"${form_post['password']}\"></p>\n",
           "<p><input type=\"submit\" name=\"submitbutton\" ",
           "value=\"$loc_log_in\"></p>\n</form>";
 }

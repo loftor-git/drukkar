@@ -52,7 +52,7 @@ $loc_makepass_warning = "Увага! <i>Не</i> використовуйте ц
                         "щоб згенерувати свій пароль.";
 $loc_put_this_in_config_file = "Перепишіть це у ваш файл <tt>config.xml</tt>:";
 $loc_directories = "Теки:";
-$loc_log_out = "[ Вийти ]";
+$loc_log_out = "Вийти";
 $loc_session_expired = "Ваша сесія закінчилася.";
 $loc_log_in = "Увійти";
 $loc_save = "Зберегти";

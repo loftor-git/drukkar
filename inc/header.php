@@ -46,7 +46,7 @@ function blog_header($page_title = "") {
          "</head>\n",
          "<body>\n",
          "<div id=\"container\">\n",
-         "<div id=\"header\"><h1 id=\"title\"><a href=\"",
+         "<div id=\"header\"><h1 id=\"title\"><a id=\"blogtitle\" href=\"",
          $GLOBALS['blog_base_location'],
          "\">${GLOBALS['blog_title']}</a></h1>";
 

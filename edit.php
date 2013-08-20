@@ -89,10 +89,12 @@ if (isset($_SESSION['is_logged_in'])) {
         $_SESSION['created'] = time();
     }
     
-    echo "<p><a id=\"logout\" href=\"$me?logout\">$loc_log_out</a></p>\n";
+    echo "<p><a id=\"logout\" class=\"button-link\" href=\"$me?logout\">",
+         "$loc_log_out</a></p>\n";
     if (!$file_to_edit) {
         // If no file has been specified we list all entries the user can edit
-        echo "<p><a href=\"$me?file=", date($blog_file_name_format),
+        echo "<p><a class=\"button-link\" href=\"$me?file=",
+              date($blog_file_name_format),
               ".xml\">$loc_new</a></p>\n";
         foreach (array_reverse(glob($blog_entries_dir . "*.xml")) as $file) {
             $entry = entry_load($file);
@@ -105,7 +107,7 @@ if (isset($_SESSION['is_logged_in'])) {
         $entry_exists = file_exists($blog_entries_dir . $file_to_edit);
         echo "<form name=\"form\" action=\"$me?file=", $file_to_edit,
              "\" method=\"post\" enctype=\"multipart/form-data\">";
-        echo "<p><a href=\"$me\">$loc_back</a></p>";
+        echo "<p><a class=\"button-link\" href=\"$me\">$loc_back</a></p>";
 
         if ((string) $form_post['submit'] === $loc_save) {
             // Save the form that the user submitted to a file
@@ -129,8 +131,8 @@ if (isset($_SESSION['is_logged_in'])) {
         }
 
         if ($entry_exists) {
-            echo "<p><a href=\"", $blog_base_location, "index.php?post=",
-                  basename($file_to_edit, ".xml"),
+            echo "<p><a class=\"button-link\"  href=\"", $blog_base_location,
+                  "index.php?post=", basename($file_to_edit, ".xml"),
                   "\">$loc_view_entry</a></p>";
         }
         // Display the selected blog entry        

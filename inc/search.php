@@ -33,17 +33,17 @@ function blog_search_form() {
     if ($GLOBALS['blog_search_enabled']) {
         echo '<div id="search"><form action="index.php">',
              '<div id="searchform"><input type="text" name="search" ',
-             'size=50>&nbsp;<input type="submit" value="',
+             'id="searchfield" size=50>&nbsp;<input type="submit" ',
+             'class="button" id="searchbutton" value="',
               $GLOBALS['loc_search'], "\"></div><!-- #searchform -->",
               "</form></div><!-- #search -->\n";
-    } else {
-        /* Custom search code goes here, e.g., Google website search. This is 
-           also a good place to put a menu with links to your _excluded pages
-           (e.g., "About me" and "Contacts"). */
-        echo <<<CUSTOMSEARCH
-
-CUSTOMSEARCH;
     }
+    /* Custom search code goes here, e.g., Google website search. This is 
+       also a good place to put a menu with links to your _excluded pages
+       (e.g., "About me" and "Contacts"). */
+    echo <<<CUSTOMSEARCH
+CUSTOMSEARCH;
+
 }
 
 ?>
