@@ -56,6 +56,7 @@ $blog_base_url = (string) $blog_settings->base_url;
 $blog_time_zone = (string) $blog_settings->time_zone;
 $blog_caching_enabled = (string) $blog_settings->caching_enabled;
 $blog_cache_searches = (string) $blog_settings->cache_searches;
+$blog_theme = (string) $blog_settings->theme;
 
 date_default_timezone_set($blog_time_zone);
 

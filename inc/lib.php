@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
 
 Drukkar, a small blogging platform
 Copyright (C) 2011-2013 Danyil Bohdan
@@ -45,12 +45,12 @@ function list_to_xml($list, $tag) {
  */
 function list_to_string($list, $left, $right) {
     $result = "";
-    
+
     foreach (explode("\r\n", rtrim($list)) as $i) {
         if (strlen($i) > 0)
             $result = $result . $left . htmlspecialchars($i) . $right;
     }
-    
+
     return $result;
 }
 
@@ -60,7 +60,7 @@ function list_to_string($list, $left, $right) {
  */
 function entry_files($entry) {
     $files = array();
-    
+
     foreach ($entry as $key => $value)
         if (stripos(strtolower($key), "file") === 0)
             $files[] = $value;
@@ -93,20 +93,20 @@ function entry_format($entry, $entry_id, $link_target = "index.php",
                        $base_dir = "/", $files_dir = "files/") {
     $files = "";
     $tags = "";
-    
+
     foreach ($entry->file as $file) {
         $files = $files . "<a href=\"" . $base_dir . $files_dir .
                  urlencode($file) . "\">" . htmlspecialchars($file) .
-                 "</a><br />";
+                 "</a><br>";
     }
-    
+
     foreach ($entry->tag as $tag) {
         if (!((string) $tag === "_excluded" || (string) $tag === "_hidden"))
             $tags = $tags . "<a href=\"index.php?tag=" . urlencode($tag) .
                     "\">" . htmlspecialchars($tag) . "</a>, ";
     }
     $tags = substr($tags, 0, -2);
-    
+
     return "<div class=\"blogentry\">" .
             "<h2 class=\"entrytitle\"><a class=\"titlelink\" href=\"" .
             "$link_target?post=" . htmlspecialchars($entry_id) .
@@ -114,10 +114,10 @@ function entry_format($entry, $entry_id, $link_target = "index.php",
               sanitize_file_name(strip_tags($entry->title)) : "") . "\">" .
             ((string) $entry->format === "html" ? $entry->title :
             htmlspecialchars($entry->title)) .
-            "</a></h2>\n<div class=\"text\">" . 
+            "</a></h2>\n<div class=\"text\">" .
             ((string) $entry->format === "html" ? $entry->text :
             ((string) $entry->format === "markdown" ?
-            Markdown($entry->text) : htmlspecialchars($entry->text))) . 
+            Markdown($entry->text) : htmlspecialchars($entry->text))) .
             "</div><!-- .text -->\n<p class=\"files\">$files</p>" .
             ($GLOBALS['blog_show_dates'] ?
             "<p class=\"date\">" . date($GLOBALS['blog_date_format'],
@@ -146,16 +146,17 @@ function sanitize_file_name($string, $language = "ukrainian") {
  */
 function transliterate($string = '', $language = "ukrainian") {
     $ukrainian = (string) $language === "ukrainian";
-    $string=strtr($string, array(" є" => " ye",
+    $string=strtr($string, array(" й " => " i ",
+                                  " є" => " ye",
                                   " ї" => " yi",
-                                  " ю" => " yu", 
+                                  " ю" => " yu",
                                   " я" => " ya",
                                   " й" => " y",
                                   "є" => "ie",
                                   "ї" => "i",
-                                  "ю" => ($ukrainian ? "iu" : "yu"), 
+                                  "ю" => ($ukrainian ? "iu" : "yu"),
                                   "я" => ($ukrainian ? "ia" : "ya"),
-                                  "й" => ($ukrainian ? "i" : "y"), 
+                                  "й" => ($ukrainian ? "i" : "y"),
                                   "ё" => "io",
                                   "ье" => "ye",
                                   "ж" => "zh",
@@ -165,9 +166,9 @@ function transliterate($string = '', $language = "ukrainian") {
                                   "ш" => "sh",
                                   "щ" => "shch",
                                   "ь" => "",
-                                  "ъ" => "", 
+                                  "ъ" => "",
                                  ));
-    
+
     $string=strtr($string, array("а" => "a",
                                   "б" => "b",
                                   "в" => "v",
@@ -192,7 +193,7 @@ function transliterate($string = '', $language = "ukrainian") {
                                   "ы" => "y",
                                   "э" => "e",
                                  ));
-    
+
     return $string;
 }
 
@@ -232,7 +233,7 @@ function process_uploaded_files($uploaded_files,
                        htmlspecialchars($file['name']));
             }
         }
-        
+
     }
     return $files;
 }
@@ -277,7 +278,7 @@ function entry_new() {
  */
 function entry_load($file) {
     $entry = simplexml_load_file($file);
-    
+
     if ($GLOBALS['blog_entry_date_from_file_name']) {
         // Create a back-up copy from the date stored within the file itself
         $entry->old_date = $entry->date;
@@ -285,17 +286,17 @@ function entry_load($file) {
                                       basename($file, ".xml"));
     } else {
         if (!$entry->date)
-            $entry->date = filemtime($file);       
+            $entry->date = filemtime($file);
     }
     $entry->date = (int) $entry->date;
-   
+
     return $entry;
 }
 
 /** @brief Save a blog entry to an XML file
-*
+ *
  *  Returns the result of calling file_put_contents.
-*
+ *
  *  @param string $file_name file name
  *  @param string $format "html", "markdown" or "plain" for plain text
  *  @param string $title
@@ -312,7 +313,7 @@ function entry_save($file_name, $format, $title, $text, $tags, $files, $date,
     !$GLOBALS['blog_entry_date_from_file_name']) {
         $processed_date = string_to_time($GLOBALS['blog_date_format'],
                                          $date_backup);
-        printf("<span class=\"error\">" . $GLOBALS['loc_invalid_date'] . 
+        printf("<span class=\"error\">" . $GLOBALS['loc_invalid_date'] .
                "</span><br>",
                htmlspecialchars($date),
                htmlspecialchars($date_backup));
@@ -331,10 +332,10 @@ function entry_save($file_name, $format, $title, $text, $tags, $files, $date,
 }
 
 /** @brief Put _GET or _POST data into the appropriate fields of $form.
-*
+ *
  *  Fields in $form for which there is no data in $get_or_post are filled with
  *  (bool) false.
-*
+ *
  *  @param array &$form The form to fill
  *  @param array $get_or_post _GET or _POST data
  *  @return array
@@ -360,10 +361,10 @@ function hash_with_salt($pass, $salt = "") {
 }
 
 /** @brief Check if a cache file is newer than files used to generate output.
-*
+ *
  *  This returns whether the file is newer than *.php, inc/*.php, entries/*.xml
  *  and config.xml.
-*
+ *
  *  @param string $cache_file_name cache file name
  *  @return boolean
  */
@@ -424,7 +425,7 @@ function user_name_from_uid_safe($uid) {
             return trim($output[0]);
         }
     }
-    
+
     return $uid;
 }
 
@@ -443,7 +444,18 @@ function group_name_from_gid_safe($gid) {
             return trim($output[0]);
         }
     }
-    
+
     return $gid;
+}
+
+/** @brief Return a sorted array of all blog entries' file names.
+ *
+ *  The file names are sorted from those of the entries considered the newest
+ *  to those of the oldest.
+ *
+ *  @return array
+ */
+function sorted_entry_file_names() {
+    return array_reverse(glob($GLOBALS['blog_entries_dir'] . "*.xml"));;
 }
 ?>

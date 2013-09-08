@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
 
 Drukkar, a small blogging platform
 Copyright (C) 2011-2013 Danyil Bohdan
@@ -60,29 +60,29 @@ $form_post['password'] = htmlspecialchars($form_post['password']);
 The format is "displayed_name" => "actual_location". */
 $dirs = array("$blog_files_dir" => $blog_files_dir,
                "$blog_entries_dir" => $blog_entries_dir,
-               "$blog_cache_dir" => $blog_cache_dir); 
+               "$blog_cache_dir" => $blog_cache_dir);
 
 if (in_array($form_get['dir'], $dirs))
     $directory = $dirs[$form_get['dir']];
 else
     $directory = $blog_files_dir;
 
-if ((hash_with_salt($form_post['password'], $blog_salt) === $blog_password) 
+if ((hash_with_salt($form_post['password'], $blog_salt) === $blog_password)
 && !isset($_SESSION['is_logged_in'])) {
     $_SESSION['is_logged_in'] = true;
     $_SESSION['created'] = time();
 }
 
 if (array_key_exists('logout', $_GET)) {
-    session_unset(); 
-    session_destroy(); 
+    session_unset();
+    session_destroy();
 }
 
 // Expire user's session after a period of inactivity
 if (isset($_SESSION['last_activity']) &&
-time() - $_SESSION['last_activity'] > $blog_session_length) { 
-    session_unset(); 
-    session_destroy(); 
+time() - $_SESSION['last_activity'] > $blog_session_length) {
+    session_unset();
+    session_destroy();
     echo "$loc_session_expired";
 }
 
@@ -93,7 +93,7 @@ if (confirm('$loc_delete_prompt_file'.replace('%s', file))) {
         document.form.action.value = "delete";
         document.form.file.value = file;
         document.form.submit();
-    }    
+    }
 }
 
 function frename(file) {
@@ -143,11 +143,11 @@ if (isset($_SESSION['is_logged_in'])) {
          session_regenerate_id(true);
          $_SESSION['created'] = time();
     }
-  
+
     echo "<p><a id=\"logout\" class=\"button-link\" href=\"$me?logout\">",
-         "$loc_log_out</a>\n";    
+         "$loc_log_out</a>\n";
     echo "<p>$loc_directories ";
-    
+
     foreach ($dirs as $dir) {
         echo "<a class=\"button-link\" href=\"$me?dir=$dir\">$dir</a> ";
     }
@@ -187,19 +187,20 @@ if (isset($_SESSION['is_logged_in'])) {
         // If there's no action we should process the uploaded files
         if (process_uploaded_files($_FILES, $form_post['translit'],
                                    $directory)) {
-            echo "<br>\n"; // Line break after process_uploaded_files's message.
+            // Line break after process_uploaded_files's message.
+            echo "<br>\n";
         }
-        
+
     }
-    
+
     echo "<form name=\"form\" action=\"$me",
          (htmlspecialchars($form_get['dir']) ?
           "?dir=" . htmlspecialchars($form_get['dir']) : ""),
          "\" method=\"post\" enctype=\"multipart/form-data\">\n";
-    
+
     foreach (glob($directory . "*") as $file) {
         $file_stat = stat($file);
-        $user_and_group = 
+        $user_and_group =
         $file_info = "<br>" . decoct($file_stat['mode']) . "&emsp;" .
                      user_name_from_uid_safe($file_stat['uid']) . "&emsp;" .
                      group_name_from_gid_safe($file_stat['gid']) . "&emsp;" .

@@ -13,6 +13,7 @@
     <salt></salt><!-- Type something random in here to improve how well your password is encrypted. -->
     <session_length>600</session_length><!-- How much time in seconds it takes for your log-in session to expire. -->
     
+    <theme>flat</theme><!-- The blog's theme folder name under $base_location/themes/. -->
     <entries_per_page>10</entries_per_page><!-- How many entries you want displayed per one page of your blog. -->
     <entries_per_page_for_tags_and_search>999</entries_per_page_for_tags_and_search><!-- Same as above but for searches and viewing all entries with a centain tag. -->
     

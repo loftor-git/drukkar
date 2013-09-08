@@ -42,6 +42,7 @@ function blog_search_form() {
        also a good place to put a menu with links to your _excluded pages
        (e.g., "About me" and "Contacts"). */
     echo <<<CUSTOMSEARCH
+    <a href="/">Home</a>aaaa
 CUSTOMSEARCH;
 
 }

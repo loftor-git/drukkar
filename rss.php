@@ -1,5 +1,5 @@
 ﻿<?php
-/* 
+/*
 
 Drukkar, a small blogging platform
 Copyright (C) 2011-2013 Danyil Bohdan
@@ -68,28 +68,28 @@ if ($blog_caching_enabled && cache_is_current($cache_file_name)) {
 
 ENDHEADER;
 
-    $entries = array_reverse(glob($blog_entries_dir . "*.xml"));
+    $entries = sorted_entry_file_names();
 
     foreach (array_slice($entries, 0, $blog_entries_per_page) as $file) {
         $entry = entry_load($file);
-        
+
         $id = "${blog_base_url}index.php?post=" . basename($file, ".xml") .
               ($GLOBALS['blog_entry_links_with_titles'] ? "-" .
                sanitize_file_name(strip_tags($entry->title)) : "");
 
-	    echo "<item>\n<title><![CDATA[",
-	         ((string) $entry->format === "html" ? $entry->title :
-	          htmlspecialchars($entry->title)), "]]></title>\n";
-	    echo "<link>$id</link>\n";
-	    echo "<guid>$id</guid>\n";	
-	    echo "<description><![CDATA[",
-	         ((string) $entry->format === "html" ? $entry->text :
-	         ((string) $entry->format === "markdown" ?
-	         Markdown($entry->text) : htmlspecialchars($entry->text))),
-	         "]]></description>\n";
-	    echo "<pubDate>", date($rfc822dt, (int) $entry->date),
-	         "</pubDate>\n";
-	    echo "</item>\n\n";
+            echo "<item>\n<title><![CDATA[",
+                 ((string) $entry->format === "html" ? $entry->title :
+                  htmlspecialchars($entry->title)), "]]></title>\n";
+            echo "<link>$id</link>\n";
+            echo "<guid>$id</guid>\n";
+            echo "<description><![CDATA[",
+                 ((string) $entry->format === "html" ? $entry->text :
+                 ((string) $entry->format === "markdown" ?
+                 Markdown($entry->text) : htmlspecialchars($entry->text))),
+                 "]]></description>\n";
+            echo "<pubDate>", date($rfc822dt, (int) $entry->date),
+                 "</pubDate>\n";
+            echo "</item>\n\n";
     }
 
     echo <<<ENDFOOTER
@@ -103,8 +103,8 @@ ENDFOOTER;
         fwrite($cache_file_out, "<!-- RSS feed -->\n");
         fwrite($cache_file_out, ob_get_contents());
         fclose($cache_file_out);
-        ob_end_flush();    
-    }  
+        ob_end_flush();
+    }
 
 }
 

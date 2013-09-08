@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
 
 Drukkar, a small blogging platform
 Copyright (C) 2011-2013 Danyil Bohdan
@@ -41,7 +41,8 @@ function blog_header($page_title = "") {
          "    <link rel=\"shortcut icon\" href=\"favicon.ico\">\n",
          "    <title>$page_title</title>\n",
          "    <style type=\"text/css\" media=\"all\">\n",
-         "        @import \"blog.css\";\n",
+         "        @import \"${GLOBALS['blog_base_location']}/themes/",
+         "${GLOBALS['blog_theme']}/blog.css\";\n",
          "    </style>\n",
          "</head>\n",
          "<body>\n",

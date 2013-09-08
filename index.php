@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
 
 Drukkar, a small blogging platform
 Copyright (C) 2011-2013 Danyil Bohdan
@@ -83,15 +83,14 @@ if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches)
             page_start();
             echo $loc_entry_not_found;
         }
-     }
-     else {
+     } else { // !$post
         page_start();
 
-        $entries = array_reverse(glob($blog_entries_dir . "*.xml"));
+        $entries = sorted_entry_file_names();
 
         if ($form['tag'] === '_excluded' || $form['tag'] === '_hidden') {
             // Don't allow searching for _hidden or _excluded entries.
-            $entries = array(); 
+            $entries = array();
         } else {
             $entries = array_filter($entries,
             function ($file) {
@@ -99,27 +98,27 @@ if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches)
                        we're looking to display. */
                     global $form;
                     global $blog_search_enabled;
-                    
+
                     $entry = entry_load($file);
-                    
+
                     if (entry_check_tag('_hidden', $entry)) {
-                            /* _hidden entries can only be viewed with a 
+                            /* _hidden entries can only be viewed with a
                                direct link. */
                             return false;
-                    }          
-                          
+                    }
+
                     // $t indicates whether to display the current entry.
-                    $t = true; 
-                    
-                    if ($form['tag']) { 
+                    $t = true;
+
+                    if ($form['tag']) {
                         /* If we've been given a tag filter out entries
                            without it. */
                         $t = $t && entry_check_tag($form['tag'], $entry);
                     }
-                    
+
                     /* We look for a string in each entry's text, title,
                        date and file names. */
-                    if ($form['search'] && $blog_search_enabled) { 
+                    if ($form['search'] && $blog_search_enabled) {
                         $t = $t &&
                              (stripos($entry->title, $form['search'])
                              !== false ||
@@ -133,10 +132,10 @@ if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches)
                                      $form['search'])
                              !== false);
                     }
-                    
+
                     /* Don't show excluded entries if not searching or viewing
                        posts by tag */
-                    if (!$form['tag'] && !$form['search']) { 
+                    if (!$form['tag'] && !$form['search']) {
                         $t = $t && !entry_check_tag('_excluded', $entry);
                     }
 
@@ -144,7 +143,7 @@ if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches)
                 }
             );
         }
-        
+
         if ($form['tag'] || $form['search']) {
             $blog_entries_per_page =
             $blog_entries_per_page_for_tags_and_search;
@@ -162,19 +161,19 @@ if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches)
                                    $blog_base_location,
                                    $blog_files_dir) . "\n";
             }
-            
+
             /* Used below when generating links to different pages of search or
                tag lookup results. */
-            $query_string = array(); 
-            
+            $query_string = array();
+
             if ($form['tag']) {
                 $query_string[] = "tag=" . $form['tag'];
             }
-            
+
             if ($form['search']) {
                 $query_string[] = "search=" . $form['search'];
             }
-            
+
             // Show page navigation links if needed
             if (($form['page'] + 1) * $blog_entries_per_page <
 count($entries)) {
@@ -183,9 +182,9 @@ count($entries)) {
                      implode("&", $query_string),
                      "\">$loc_prev_page</a>";
             }
-            
+
             // If there are more entries to display
-            if ($form['page'] > 0) { 
+            if ($form['page'] > 0) {
                 $query_string[] = "page=" . ($form['page'] - 1);
                 echo "<a id=\"nextpagelink\" href=\"$me?",
                 implode("&", $query_string), "\">$loc_next_page</a>";
@@ -205,7 +204,7 @@ count($entries)) {
         fwrite($cache_file_out, "<!-- $cache_id -->\n");
         fwrite($cache_file_out, ob_get_contents());
         fclose($cache_file_out);
-        ob_end_flush();    
-    }    
+        ob_end_flush();
+    }
 }
 ?>
