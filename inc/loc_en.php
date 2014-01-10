@@ -87,5 +87,7 @@ $loc_creating_dirs_success = "Success! Once you've placed a correct " .
                              "remove <tt>%s</tt> from your server.";
 $loc_creating_dir = "Creating <tt>%s</tt>...";
 $loc_creating_dir_failed = "failed!";
+$loc_manage_files = "Manage files";
+$loc_edit_entries = "Edit entries";
 
 ?>

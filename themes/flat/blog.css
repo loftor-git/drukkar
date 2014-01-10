@@ -8,64 +8,71 @@ body {
     font-size: 13pt;
 }
 
-div#container {
+#container {
+    border-top: 3px solid #cccccc;
     margin-left: auto;
     margin-right: auto;
     width: 800px;
     background-color: #ffffff;
-    border: 3px solid #cccccc;
 }
 
-div#header {
+#header {
     padding-top: 20px;
     padding-left: 10px;
     padding-right: 10px;
     color: #cccccc;
 }
 
-div#footer {
+#footer {
+    border-top: 3px solid #cccccc;
+    background-color: #f5f5f5;
     clear:both;
     text-align: center;
     width:100%;
+    #width:600px;
     padding-top: 5px;
     padding-bottom: 12px;
     font-size: 75%;
 }
 
-div#sidebar {
+#sidebar {
     float: right;
-    width: 170px;
-    padding-left: 10px;
+    width: 165px;
+    padding-left: 15px;
+    padding-right: 15px;
     background-color: #ffffff;
-    border-top-style: solid;
-    border-top-width: 3px;
-    border-top-color: #f5f5f5;
+    border-top: 3px solid #eeeeee;
 }
 
-div#content {
+#content {
     float: left;
-    border-top-style: solid;
-    border-top-width: 3px;
-    width: 780px;
-    border-top-color: #f5f5f5;
+    width: 760px;
+    border-top: 3px solid #eeeeee;
  /* border: 1px solid #999999; */
     padding: 10px;
+    padding-left: 25px;
+    padding-right: 15px;
     line-height: 135%;
 }
 
-div#navbar {
-    padding-left: 10px;
-    padding-right: 10px;
+#sidebar + #content {
+    width: 565px;
 }
 
-div#sidebar + div#content {
-    width: 600px;
+#navbar {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+
+#navbar a {
+    margin-right: 20px;
 }
 
 h1#title {
     text-align: center;
- /* text-transform:uppercase;
-    font-size: 250%; */
+ /* text-transform:uppercase;*/
+    font-size: 200%; 
 #    padding-left: 25px;
     padding-bottom: 0px;
     font-weight: normal;
@@ -74,9 +81,10 @@ h1#title {
 h2#subtitle {
     text-align: center;
     font-weight: normal;
+    font-size: 125%;
 }
 
-div#search {
+#search {
     position: absolute;
     #left: 0px;
     top: 20px;
@@ -87,7 +95,7 @@ div#search {
     padding-bottom: 5px; */
 }
 
-div#searchform {
+#searchform {
     float: right;
  /* width: 700px;
     text-align: center;
@@ -139,12 +147,14 @@ input
 
 input[type="button"], input[type="submit"], .button-link {
     background-color:#378de5;
-    display:inline-block;
+    #display:inline-block;
     color:#ffffff;
     font-weight:bold;
     padding:2px 24px;
     text-decoration:none;
     border: none;
+    font-size: 10pt;
+    height:20px;
 }
 
 input[type="button"]:hover, input[type="submit"]:hover, .button-link:hover {
@@ -190,7 +200,7 @@ h4 {
 
 tt, code, ol.source {
     font-family: monospace;
-    font-size: 110%;
+    font-size: 100%;
 }
 
 
@@ -235,8 +245,6 @@ hr {
     background-color: #cccccc;
 }
 
-
-
 a {
     text-decoration: none;
     color: #378de5;
@@ -262,8 +270,8 @@ a#nextpagelink {
     float: right;
 }
 
-a#logout {
-    float: right;
+#adminpagelinks {
+    text-align: right;
 }
 
 a#blogtitle {

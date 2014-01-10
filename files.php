@@ -144,8 +144,10 @@ if (isset($_SESSION['is_logged_in'])) {
          $_SESSION['created'] = time();
     }
 
-    echo "<p><a id=\"logout\" class=\"button-link\" href=\"$me?logout\">",
-         "$loc_log_out</a>\n";
+    echo "<div id=\"adminpagelinks\"><a class=\"button-link\" ",
+         "href=\"${blog_base_location}edit.php\">$loc_edit_entries</a> ",
+         "<a id=\"logout\" class=\"button-link\" href=\"$me?logout\">",
+         "$loc_log_out</a></div>\n";
     echo "<p>$loc_directories ";
 
     foreach ($dirs as $dir) {

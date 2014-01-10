@@ -90,8 +90,10 @@ if (isset($_SESSION['is_logged_in'])) {
         $_SESSION['created'] = time();
     }
 
-    echo "<p><a id=\"logout\" class=\"button-link\" href=\"$me?logout\">",
-         "$loc_log_out</a></p>\n";
+    echo "<div id=\"adminpagelinks\"><a class=\"button-link\" ",
+         "href=\"${blog_base_location}files.php\">$loc_manage_files</a> ",
+         "<a id=\"logout\" class=\"button-link\" href=\"$me?logout\">",
+         "$loc_log_out</a></div>\n";
     if (!$file_to_edit && !$new_entry) {
         // If no file has been specified we list all entries the user can edit
         echo "<p><a class=\"button-link\" href=\"$me?new\">",

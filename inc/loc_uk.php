@@ -88,5 +88,7 @@ $loc_creating_dirs_success = "Удалося! Коли ви розмістите
                              "сервера.";
 $loc_creating_dir = "Створюю <tt>%s</tt>...";
 $loc_creating_dir_failed = "не вдалося!";
+$loc_manage_files = "Керувати файлами";
+$loc_edit_entries = "Редагувати записи";
 
 ?>
