@@ -36,14 +36,13 @@ function blog_header($page_title = "") {
     echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" ",
          "\"http://www.w3.org/TR/html4/strict.dtd\">\n",
          "<html>\n<head>\n",
-         "<meta http-equiv=\"Content-Type\" content=\"text/html; ",
+         "    <meta http-equiv=\"Content-Type\" content=\"text/html; ",
          "charset=UTF-8\">\n",
-         "    <link rel=\"shortcut icon\" href=\"favicon.ico\">\n",
          "    <title>$page_title</title>\n",
-         "    <style type=\"text/css\" media=\"all\">\n",
-         "        @import \"${GLOBALS['blog_base_location']}/themes/",
-         "${GLOBALS['blog_theme']}/blog.css\";\n",
-         "    </style>\n",
+         "    <link rel=\"shortcut icon\" href=\"favicon.ico\">\n",
+         "    <link rel=\"stylesheet\" href=\"",
+         "${GLOBALS['blog_base_location']}themes/",
+         "${GLOBALS['blog_theme']}/blog.css\">\n",
          "</head>\n",
          "<body>\n",
          "<div id=\"container\">\n",
@@ -52,7 +51,7 @@ function blog_header($page_title = "") {
          "\">${GLOBALS['blog_title']}</a></h1>";
 
     if (strlen($GLOBALS['blog_subtitle']) > 0) {
-        echo "<p id=\"subtitle\">${GLOBALS['blog_subtitle']}</p>";
+        echo "<h2 id=\"subtitle\">${GLOBALS['blog_subtitle']}</h2>";
     }
 
     echo "</div><!-- #header -->\n";

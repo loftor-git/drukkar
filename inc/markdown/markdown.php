@@ -12,7 +12,7 @@
 #
 
 
-define( 'MARKDOWN_VERSION',  "1.0.1p" ); # Sun 13 Jan 2013
+define( 'MARKDOWN_VERSION',  "1.0.1q" ); # 11 Apr 2013
 
 
 #
@@ -20,8 +20,7 @@ define( 'MARKDOWN_VERSION',  "1.0.1p" ); # Sun 13 Jan 2013
 #
 
 # Change to ">" for HTML output
-#@define( 'MARKDOWN_EMPTY_ELEMENT_SUFFIX',  " />");
-@define( 'MARKDOWN_EMPTY_ELEMENT_SUFFIX',  ">");
+@define( 'MARKDOWN_EMPTY_ELEMENT_SUFFIX',  " />");
 
 # Define the width of a tab for code blocks.
 @define( 'MARKDOWN_TAB_WIDTH',     4 );
@@ -63,7 +62,7 @@ function Markdown($text) {
 Plugin Name: Markdown
 Plugin URI: http://michelf.ca/projects/php-markdown/
 Description: <a href="http://daringfireball.net/projects/markdown/syntax">Markdown syntax</a> allows you to write using an easy-to-read, easy-to-write plain text format. Based on the original Perl version by <a href="http://daringfireball.net/">John Gruber</a>. <a href="http://michelf.ca/projects/php-markdown/">More...</a>
-Version: 1.0.1p
+Version: 1.0.1q
 Author: Michel Fortin
 Author URI: http://michelf.ca/
 */
@@ -264,7 +263,7 @@ class Markdown_Parser {
 		$this->titles = $this->predef_titles;
 		$this->html_hashes = array();
 		
-		$in_anchor = false;
+		$this->in_anchor = false;
 	}
 	
 	function teardown() {

@@ -67,7 +67,7 @@ h4 {
     font-weight: bold;      
 }
 
-p#subtitle {
+h2#subtitle {
     text-align: center;
     padding: 5px;
 }
@@ -92,6 +92,25 @@ div#searchform {
 }
 
 div#content {
+    width: 800px;
+    border: 1px solid #999999;
+    background-color: #ffffff;
+    padding: 10px;
+    line-height: 150%;    
+}
+
+div#sidebar {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 800px;
+    border: 1px solid #999999;
+    background-color: #ffffff;
+    padding: 10px;
+    line-height: 150%;    
+}
+
+div#navbar {
+    margin-top: 5px;
     width: 800px;
     border: 1px solid #999999;
     background-color: #ffffff;

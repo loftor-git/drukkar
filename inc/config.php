@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
 
 Drukkar, a small blogging platform
 Copyright (C) 2011-2013 Danyil Bohdan
@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
 //! The current version of Drukkar version
-$version = "1.12";
+$version = "2.0.0";
 
 $blog_settings = simplexml_load_file("config.xml");
 #var_dump($blog_settings);
@@ -43,13 +43,14 @@ $blog_entries_per_page = (int) $blog_settings->entries_per_page;
 $blog_entries_per_page_for_tags_and_search = (int) $blog_settings->
 entries_per_page_for_tags_and_search;
 $blog_locale = (string) $blog_settings->locale;
-$blog_entry_links_with_titles = (bool) (int) $blog_settings->
-entry_links_with_titles;
+$blog_entry_links_with_titles = false;
 $blog_date_format = (string) $blog_settings->date_format;
 $blog_entry_date_from_file_name = (bool) (int) $blog_settings->
 entry_date_from_file_name;
-$blog_file_name_format = (string) "YmdHis";
+$blog_file_name_format = (string) "YmdHi";
 $blog_search_enabled = (bool) (int) $blog_settings->search_enabled;
+$blog_navbar_enabled = (bool) (int) $blog_settings->navbar_enabled;
+$blog_sidebar_enabled = (bool) (int) $blog_settings->sidebar_enabled;
 $blog_show_dates = (bool) (int) $blog_settings->show_dates;
 $blog_base_location = (string) $blog_settings->base_location;
 $blog_base_url = (string) $blog_settings->base_url;

@@ -129,7 +129,6 @@ if (isset($_SESSION['is_logged_in'])) {
                                                    $form_post['translit']) :
                                 '') . ".xml";
             }
-            echo("fte:$file_to_edit");
             if (entry_save($blog_entries_dir . $file_to_edit,
                            $form_post['format'],
                            $form_post['title'],

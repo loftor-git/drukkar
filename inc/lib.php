@@ -283,7 +283,8 @@ function entry_load($file) {
         // Create a back-up copy from the date stored within the file itself
         $entry->old_date = $entry->date;
         $entry->date = string_to_time($GLOBALS['blog_file_name_format'],
-                                      basename($file, ".xml"));
+                                      strtok(basename($file, ".xml") . "-",
+                                                      "-"));
     } else {
         if (!$entry->date)
             $entry->date = filemtime($file);

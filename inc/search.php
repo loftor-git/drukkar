@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
 
 Drukkar, a small blogging platform
 Copyright (C) 2011-2013 Danyil Bohdan
@@ -30,6 +30,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 /** @brief Outputs the search bar and custom search/menu, if any.
  */
 function blog_search_form() {
+    if ($GLOBALS['blog_navbar_enabled']) {
+        /* Custom search code goes here, e.g., Google website search. This is
+           also a good place to put a menu with links to your _excluded pages
+           (e.g., "About me" and "Contacts"). */
+        echo <<<NAVIGATION_AND_CUSTOM_SEARCH
+        <div id="navbar">
+            <a href="${GLOBALS['blog_base_location']}">Home</a>
+            <a href="${GLOBALS['blog_base_location']}index.php?post=about">About</a>
+            <a href="${GLOBALS['blog_base_location']}index.php?post=contacts">Contacts</a>
+        </div><!-- #navbar -->
+
+NAVIGATION_AND_CUSTOM_SEARCH;
+    }
+
     if ($GLOBALS['blog_search_enabled']) {
         echo '<div id="search"><form action="index.php">',
              '<div id="searchform"><input type="text" name="search" ',
@@ -38,12 +52,6 @@ function blog_search_form() {
               $GLOBALS['loc_search'], "\"></div><!-- #searchform -->",
               "</form></div><!-- #search -->\n";
     }
-    /* Custom search code goes here, e.g., Google website search. This is 
-       also a good place to put a menu with links to your _excluded pages
-       (e.g., "About me" and "Contacts"). */
-    echo <<<CUSTOMSEARCH
-    <a href="/">Home</a>aaaa
-CUSTOMSEARCH;
 
 }
 

@@ -17,16 +17,49 @@ div#container {
 }
 
 div#header {
+    padding-top: 20px;
     padding-left: 10px;
     padding-right: 10px;
     color: #cccccc;
 }
 
 div#footer {
+    clear:both;
     text-align: center;
+    width:100%;
     padding-top: 5px;
     padding-bottom: 12px;
     font-size: 75%;
+}
+
+div#sidebar {
+    float: right;
+    width: 170px;
+    padding-left: 10px;
+    background-color: #ffffff;
+    border-top-style: solid;
+    border-top-width: 3px;
+    border-top-color: #f5f5f5;
+}
+
+div#content {
+    float: left;
+    border-top-style: solid;
+    border-top-width: 3px;
+    width: 780px;
+    border-top-color: #f5f5f5;
+ /* border: 1px solid #999999; */
+    padding: 10px;
+    line-height: 135%;
+}
+
+div#navbar {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+div#sidebar + div#content {
+    width: 600px;
 }
 
 h1#title {
@@ -34,17 +67,20 @@ h1#title {
  /* text-transform:uppercase;
     font-size: 250%; */
 #    padding-left: 25px;
+    padding-bottom: 0px;
     font-weight: normal;
 }
 
-p#subtitle {
+h2#subtitle {
     text-align: center;
-    padding: 5px;
+    font-weight: normal;
 }
 
 div#search {
     position: absolute;
+    #left: 0px;
     top: 20px;
+    width: 780px;
     padding-left: 10px;
    /* background-color: #f5f5f5;
     padding-top: 5px;
@@ -73,15 +109,6 @@ input#searchbutton {
 
 input#searchbutton:hover {
     background-color:#79bbff;
-}
-
-div#content {
-    border-top-style: solid;
-    border-top-width: 3px;
-    border-top-color: #f5f5f5;
- /* border: 1px solid #999999; */
-    padding: 10px;
-    line-height: 135%;
 }
 
 div.blogentry {
@@ -207,6 +234,8 @@ hr {
     color: #cccccc;
     background-color: #cccccc;
 }
+
+
 
 a {
     text-decoration: none;

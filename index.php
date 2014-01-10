@@ -28,8 +28,9 @@ function page_start($title = "") {
     // The header. It's mostly HTML with little logic.
     blog_header($title);
 
-    // Search form
     blog_search_form();
+    
+    blog_sidebar();
 
     echo "<div id=\"content\">\n";
 }
@@ -43,13 +44,14 @@ include("inc/config.php");
 
 include("inc/header.php");
 include("inc/search.php");
+include("inc/sidebar.php");
 include("inc/footer.php");
 
 $form = array('page', 'post', 'tag', 'search');
 process_form($form, $_GET);
 $post = $form['post'];
 if ($post) {
-    $post = basename(strtok($post . "-", "-"));
+    $post = basename($post);
     $form['page'] = false;
     $form['tag'] = false;
     $form['search'] = false;
