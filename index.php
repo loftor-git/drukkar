@@ -2,7 +2,7 @@
 /*
 
 Drukkar, a small blogging platform
-Copyright (C) 2011-2013 Danyil Bohdan
+Copyright (C) 2011-2014 Danyil Bohdan
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -29,7 +29,7 @@ function page_start($title = "") {
     blog_header($title);
 
     blog_search_form();
-    
+
     blog_sidebar();
 
     echo "<div id=\"content\">\n";
@@ -177,19 +177,24 @@ if ($blog_caching_enabled && (!$form['search'] || $blog_cache_searches)
             }
 
             // Show page navigation links if needed
-            if (($form['page'] + 1) * $blog_entries_per_page <
-count($entries)) {
-                $query_string[] = "page=" . ($form['page'] + 1);
-                echo "<a id=\"prevpagelink\" href=\"$me?",
-                     implode("&", $query_string),
-                     "\">$loc_prev_page</a>";
-            }
+            if ((($form['page'] + 1) * $blog_entries_per_page <
+count($entries)) || ($form['page'] > 0)) {
+                echo "<div id=\"pagelinks\">";
+                if (($form['page'] + 1) * $blog_entries_per_page <
+    count($entries)) {
+                    $query_string[] = "page=" . ($form['page'] + 1);
+                    echo "<a id=\"prevpagelink\" href=\"$me?",
+                         implode("&", $query_string),
+                         "\">$loc_prev_page</a>";
+                }
 
-            // If there are more entries to display
-            if ($form['page'] > 0) {
-                $query_string[] = "page=" . ($form['page'] - 1);
-                echo "<a id=\"nextpagelink\" href=\"$me?",
-                implode("&", $query_string), "\">$loc_next_page</a>";
+                // If there are more entries to display
+                if ($form['page'] > 0) {
+                    $query_string[] = "page=" . ($form['page'] - 1);
+                    echo "<a id=\"nextpagelink\" href=\"$me?",
+                    implode("&", $query_string), "\">$loc_next_page</a>";
+                }
+                echo "</div><!-- #pagelinks -->\n";
             }
         } else {
             echo $loc_no_matches;

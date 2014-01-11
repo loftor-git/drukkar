@@ -11,7 +11,7 @@
     <subtitle>Blog subtitle here</subtitle><!-- Displayed right under the title. -->
     <password>696d29e0940a4957748fe3fc9efd22a3</password><!-- The salted hash of your password goes here. Use makepass.php to calculate it. The default is "password". -->
     <salt></salt><!-- Type something random in here to improve how well your password is encrypted. -->
-    <session_length>600</session_length><!-- How much time in seconds it takes for your log-in session to expire. -->
+    <session_length>1800</session_length><!-- How much time in seconds it takes for your log-in session to expire. -->
 
     <theme>flat</theme><!-- The blog's theme folder name under $base_location/themes/. -->
     <entries_per_page>10</entries_per_page><!-- How many entries you want displayed per one page of your blog. -->

@@ -17,7 +17,7 @@ body {
 }
 
 #header {
-    padding-top: 20px;
+    padding-top: 30px;
     padding-left: 10px;
     padding-right: 10px;
     color: #cccccc;
@@ -29,7 +29,6 @@ body {
     clear:both;
     text-align: center;
     width:100%;
-    #width:600px;
     padding-top: 5px;
     padding-bottom: 12px;
     font-size: 75%;
@@ -40,6 +39,7 @@ body {
     width: 165px;
     padding-left: 15px;
     padding-right: 15px;
+    padding-bottom: 15px;
     background-color: #ffffff;
     border-top: 3px solid #eeeeee;
 }
@@ -48,7 +48,6 @@ body {
     float: left;
     width: 760px;
     border-top: 3px solid #eeeeee;
- /* border: 1px solid #999999; */
     padding: 10px;
     padding-left: 25px;
     padding-right: 15px;
@@ -71,39 +70,29 @@ body {
 
 h1#title {
     text-align: center;
- /* text-transform:uppercase;*/
-    font-size: 200%; 
-#    padding-left: 25px;
+    font-size: 200%;
     padding-bottom: 0px;
     font-weight: normal;
+    margin: 5px;
 }
 
 h2#subtitle {
     text-align: center;
     font-weight: normal;
     font-size: 125%;
+    margin: 5px;
 }
 
 #search {
     position: absolute;
-    #left: 0px;
     top: 20px;
     width: 780px;
     padding-left: 10px;
-   /* background-color: #f5f5f5;
-    padding-top: 5px;
-    padding-bottom: 5px; */
 }
 
 #searchform {
     float: right;
- /* width: 700px;
-    text-align: center;
- /* border: 1px solid #999999; */
- /* background-color: #ffffff; */
-    padding-right: 15px;
- /*   margin-left:auto;
-    margin-right:auto; */
+    padding-right: 0px;
 }
 
 
@@ -111,13 +100,12 @@ input#searchfield {
     width: 10em;
 }
 
+
 input#searchbutton {
-    background: #378de5 no-repeat;
+    padding-left:2px;
+    padding-right:2px;
 }
 
-input#searchbutton:hover {
-    background-color:#79bbff;
-}
 
 div.blogentry {
     border-bottom-style: solid;
@@ -132,8 +120,6 @@ div.text {
 }
 
 li {
- /* padding-left: 20px;
-    padding-right: 20px; */
     text-indent: 0em;
 }
 
@@ -146,19 +132,17 @@ input
 }
 
 input[type="button"], input[type="submit"], .button-link {
-    background-color:#378de5;
-    #display:inline-block;
+    background-color:#359ada;
     color:#ffffff;
     font-weight:bold;
     padding:2px 24px;
     text-decoration:none;
     border: none;
     font-size: 10pt;
-    height:20px;
 }
 
 input[type="button"]:hover, input[type="submit"]:hover, .button-link:hover {
-    background-color:#79bbff;
+    background-color:#2a6595;
     color:#ffffff;
 }
 
@@ -180,22 +164,17 @@ input[type="button"]:active, input[type="submit"]:active, .button-link:active {
 
 h2 {
     text-indent: 0px;
- /* font-size: 175%; */
 }
 
 h2.entrytitle {
- /* padding-left: 25px;
-    padding-right: 25px; */
 }
 
 h3 {
     text-indent: 0px;
- /* font-size: 150%; */
 }
 
 h4 {
     text-indent: 0px;
- /* font-size: 125%; */
 }
 
 tt, code, ol.source {
@@ -247,19 +226,19 @@ hr {
 
 a {
     text-decoration: none;
-    color: #378de5;
+    color: #359ada;
 }
 
 a:hover {
-    color: #79bbff;
+    color: #2a6595;
 }
 
 a:active {
-    color: #e5378d;
+    color: #2a6595;
 }
 
 a:visited {
-    color: #751590;
+    color: #35608c;
 }
 
 a#prevpagelink {

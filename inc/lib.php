@@ -2,7 +2,7 @@
 /*
 
 Drukkar, a small blogging platform
-Copyright (C) 2011-2013 Danyil Bohdan
+Copyright (C) 2011-2014 Danyil Bohdan
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -122,7 +122,7 @@ function entry_format($entry, $entry_id, $link_target = "index.php",
             ($GLOBALS['blog_show_dates'] ?
             "<p class=\"date\">" . date($GLOBALS['blog_date_format'],
             (int) $entry->date) . "</p>" : "") . (strlen($tags) != 0 ?
-            "<p class=\"tags\">Tags: $tags</p>" : "") .
+            "<p class=\"tags\">${GLOBALS['loc_tags']}: $tags</p>" : "") .
             "</div><!-- .blogentry -->";
 }
 

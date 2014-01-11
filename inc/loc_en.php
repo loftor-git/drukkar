@@ -2,7 +2,7 @@
 /*
 
 Drukkar, a small blogging platform
-Copyright (C) 2011-2013 Danyil Bohdan
+Copyright (C) 2011-2014 Danyil Bohdan
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -39,16 +39,16 @@ $loc_new = "New";
 $loc_view_entry = "View entry";
 $loc_edit_saved = "Edit saved!";
 $loc_saving_failed = "Saving failed!";
-$loc_upload = "Upload files:";
+$loc_upload = "Upload files";
 $loc_file_uploaded = "File <tt>%s</tt> successfully uploaded as <tt>%s</tt>.";
 $loc_uploading_failed = "Couldn't upload the file <tt>%s</tt>.";
 $loc_uploading_failed_file_exists = "Couldn't upload the file <tt>%s</tt>: " .
-                                    "file exists.";
+                                    "file exists on the server.";
 $loc_file_not_found = "File not found:";
 $loc_invalid_date = "The date %s is invalid; the previous date %s has been " .
                     "retained.";
 $loc_makepass_warning = "Warning! Do <i>not</i> use this script on a remote" .
-                        " server over an unsecure connection. Instead, run " .
+                        " server over an unsecured connection. Instead, run " .
                         "it locally to generate your password.";
 $loc_put_this_in_config_file = "Put this in your <tt>config.xml</tt> file:";
 $loc_directories = "Directories:";
@@ -56,7 +56,7 @@ $loc_log_out = "Log out";
 $loc_log_in = "Log in";
 $loc_session_expired = "Your session has expired.";
 $loc_save = "Save";
-$loc_format = "Format:";
+$loc_format = "Format";
 $loc_html = "HTML";
 $loc_plain = "Plain text";
 $loc_markdown = "Markdown";
@@ -77,9 +77,10 @@ $loc_file_renamed = "The file <tt>%s</tt> has been renamed to <tt>%s</tt>.";
 $loc_back = "Back";
 $loc_next_page = "Next page";
 $loc_prev_page = "Previous page";
-$loc_translit = "Transliterate Cyrillic file names from";
+$loc_translit = "Transliterate Cyrillic file names and entry titles from";
 $loc_ukrainian = "Ukrainian";
 $loc_russian = "Russian";
+$loc_tags = "Tags";
 $loc_creating_dirs = "Creating directories...";
 $loc_creating_dirs_success = "Success! Once you've placed a correct " .
                              "<tt>.htaccess</tt> in each directory and made " .

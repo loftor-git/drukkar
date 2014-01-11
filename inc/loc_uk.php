@@ -2,7 +2,7 @@
 /*
 
 Drukkar, a small blogging platform
-Copyright (C) 2011-2013 Danyil Bohdan
+Copyright (C) 2011-2014 Danyil Bohdan
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -39,11 +39,11 @@ $loc_new = "Новий запис";
 $loc_view_entry = "Переглянути запис";
 $loc_edit_saved = "Редагування збережено!";
 $loc_saving_failed = "Файл не вдалося зберегти!";
-$loc_upload = "Завантажити файли:";
+$loc_upload = "Завантажити файли";
 $loc_file_uploaded = "Файл <tt>%s</tt> завантажено як <tt>%s</tt>.";
 $loc_uploading_failed = "Не вдалося завантажити файл <tt>%s</tt>.";
 $loc_uploading_failed_file_exists = "Не вдалося завантажити файл " .
-                                    "<tt>%s</tt>: файл вже існує";
+                                    "<tt>%s</tt>: файл вже існує на сервері";
 $loc_file_not_found = "Файл не знайдено:";
 $loc_invalid_date = "Дата %s неправильна; збережено попередню дату: %s.";
 $loc_makepass_warning = "Увага! <i>Не</i> використовуйте цього скрипту на " .
@@ -56,7 +56,7 @@ $loc_log_out = "Вийти";
 $loc_session_expired = "Ваша сесія закінчилася.";
 $loc_log_in = "Увійти";
 $loc_save = "Зберегти";
-$loc_format = "Формат:";
+$loc_format = "Формат";
 $loc_html = "HTML";
 $loc_plain = "Чистий текст";
 $loc_markdown = "Markdown";
@@ -75,13 +75,15 @@ $loc_tib = "ТіБ";
 $loc_pib = "ПіБ";
 $loc_file_renamed  = "Файл <tt>%s</tt> перейменовано на <tt>%s</tt>.";
 $loc_back = "Назад";
-$loc_next_page = "Новіші записи >";
-$loc_prev_page = "< Давніші записи";
-$loc_translit = "Транслітерувати кириличні імена файлів";
+$loc_next_page = "Новіші записи";
+$loc_prev_page = "Давніші записи";
+$loc_translit = "Транслітерувати кириличні імена файлів і заголовки записів";
 $loc_ukrainian = "з української";
 $loc_russian = "з російської";
+$loc_tags = "Теґи";
 $loc_creating_dirs = "Створюю директорії...";
-$loc_creating_dirs_success = "Удалося! Коли ви розмістите відповідні файли " .
+$loc_creating_dirs_success = "Удалося! Після того, як ви розмістите " .
+                             "відповідні файли " .
                              "<tt>.htaccess</tt> у кожній директорії " .
                              "та переконаєтеся, що все працює, як треба, " .
                              "не забудьте вилучити <tt>%s</tt> з вашого " .
